@@ -2,30 +2,18 @@
 
 Cahier des charges – Projet Web : “Explorateur du Cosmos”:
 Objectif :
-Créer un site web sur lequel nous pouvons avoir les données de chaque planète, meteo de mars, photo de l’astre prise tous les jours par la nasa, décollage de chaque fusée de spacex, position exacte de l’iss avec le nombre d’humains dans l’espace actuellement, astéroïde etc..
+Créer un site web sur lequel nous pouvons avoir les données de chaque planète, meteo de mars, photo de l’astre prise tous les jours par la nasa, décollage de chaque fusée de spacex, position exacte de l’iss avec le nombre d’humains dans l’espace actuellement, astéroïde etc.
 Technologies à utiliser :
 HTML : structure du site
-
-
 CSS : mise en forme, animations
-
-
 JavaScript : interactions, appels API
 
 
 API(s) :
-
-
 NASA API
-Apod
+Open Notify
+SpaceX API
 
-
-Open Notify – 
-Affichage de l’iss 
-
-
-SpaceX API – 
-Lancements de fusées
 Structure du site web :
 Accueil :
 - Affichage de l’histoire de l'espace (premier astronaute, première fusée, satellite, technologie utilisé, dans quel condition…)
@@ -53,35 +41,7 @@ Chaque onglet parlera d’un sujet bien précis
 
 
 ![image alt](https://github.com/Qwerty92i/Astral-Website/blob/a950aa48b2fe935b76e4b9f1c71f5762bb106d12/Diagramme%20d'utilisation.jpg)
+
 ![image alt](https://github.com/Qwerty92i/Astral-Website/blob/85198a6c8dcf8c70d860915f43a428223078d41c/Diagramme%20de%20s%C3%A9quence.jpg)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-diagramme de séquence :
-
+![image alt](https://github.com/Qwerty92i/Astral-Website/blob/8e72ea81a16b9c826bb8b7715474f297ef57eeaa/Diagramme%20d'exigence.jpg)
