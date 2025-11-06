@@ -51,21 +51,9 @@ A chaque fin de page, ajouter un bouton retour à l'accueil
 Arrière-plan sur chaque onglet. Sauf si prédéfinis par son sujet 
 Chaque onglet parlera d’un sujet bien précis
 
-Diagramme d'utilisation :
+
 ![image alt](https://github.com/Qwerty92i/Astral-Website/blob/a950aa48b2fe935b76e4b9f1c71f5762bb106d12/Diagramme%20d'utilisation.jpg)
-
-
-
-
-
-
-
-
-
-
-
-
- diagramme  d'exigence : 
+![image alt](https://github.com/Qwerty92i/Astral-Website/blob/85198a6c8dcf8c70d860915f43a428223078d41c/Diagramme%20de%20s%C3%A9quence.jpg)
 
 
 
