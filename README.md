@@ -17,17 +17,23 @@ SpaceX API
 Structure du site web :
 Accueil :
 - Affichage de l’histoire de l'espace (premier astronaute, première fusée, satellite, technologie utilisé, dans quel condition…)
+  
 Système solaire : 
 - Affichage du système solaire, si une planète cliquer alors un affichage sort et affiche la planète avec ces détails.
-Onglet sur l’iss
+  
+Onglet sur l’iss :
 - Date de création, où il est en ce moment, combien il y a d’humain dedans etc..
-Daily Astre
+  
+Daily Astre:
 - Photo de l’astre mise à jour par l’api de la nasa chaque jour
-SpaceX
+  
+SpaceX:
 - Api qui permet de savoir le décollage, l'atterrissage, launchpad des fusées etc
-Quiz sur l’espace
+  
+Quiz sur l’espace:
 - Proposer des Quiz sur l’espace pour apporter des défis.
-Forum
+  
+Forum:
 - Pouvoir discuter entre fan d’espace (avec des modérateurs pouvant gérer l’espace de discussion) ces espaces de discussions seront composé de 2 salon, Le premier sera les informations avec les règles le second est l’endroit de discussion.
 Connection
 - Permet de se connecter pour pouvoir accéder au forum et avoir un pseudo 
