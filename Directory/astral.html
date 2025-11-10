@@ -15,10 +15,23 @@
             background-repeat: repeat;
             color: #e6eef8;
         }
-        .card{
+        .navigation{
             position: fixed;
             top: 1rem;
             left: 1rem;
+            width: 300px;
+            max-width: calc(100% - 2rem);
+            background: rgb(0, 0, 0);
+            padding: 1.25rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            z-index: 20;
+        }
+        .presentation{
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
             width: 300px;
             max-width: calc(100% - 2rem);
             background: rgba(0, 0, 0, 0.6);
@@ -32,8 +45,8 @@
 </head>
 <body>
     <main>
-        <section class="card">
-            <h2>Accueil</h2>
+        <texte class="presentation">
+            <h2>Présentation</h2>
             <p>Youri Alexeïevitch Gagarine est le premier homme à avoir voyagé dans l’espace. Le 12 avril 1961, il a effectué le tout premier vol spatial habité à bord du vaisseau Vostok 1</p>
             <p>Neil Alden Armstrong, né le 5 août 1930 à Wapakoneta, dans l’Ohio (États-Unis), et décédé le 25 août 2012 à Cincinnati, dans le même État, était un astronaute américain, pilote d'essai, aviateur de la United States Navy et professeur.</p>
             <P>Le 4 octobre 1957, les Soviétiques, dirigés par l’ingénieur Sergueï Korolev, prennent la tête de la course à l’espace : la fusée Semiorka place sur orbite le premier satellite artificiel de l’histoire, Spoutnik 1.</P>
@@ -43,7 +56,10 @@
                Les radiations cosmiques, qui peuvent endommager les instruments électroniques.
                Le vide spatial, où il n’y a pas d’air pour dissiper la chaleur.
                Les forces de lancement, très puissantes lors du décollage d’une fusée.</p>
+            </texte>
+        <section class="navigation">
             <ul>
+                <h2>Navigation</h2>
                 <li><a href="solarsys.html">Système solaire</a></li>
                 <li><a href="iss.html">Onglet sur l'iss</a></li>
                 <li><a href="daily-astre.html">Daily Astre</a></li>
