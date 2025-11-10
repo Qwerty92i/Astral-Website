@@ -48,13 +48,9 @@
             z-index: 30;
             cursor:pointer;
         }
-        .nav-toggle .bar{display:block;height:3px;background:#e6eef8;border-radius:2px}
-        .nav-toggle:focus{outline:2px solid #9ccfff; outline-offset:2px}
-
-        @media (max-width:720px){
-            .navigation{position: static; transform:none; border-radius:8px; width:auto; margin:1rem}
-            .nav-toggle{display:none}
-        }
+        .nav-toggle .bar{display:block;height:3px;background:#ffffff;border-radius:2px}
+        .nav-toggle:focus{outline:2px solid #ffffff; outline-offset:2px}
+        
         .presentation{
             position: fixed;
             top: 1rem;
@@ -68,15 +64,31 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.4);
             z-index: 20;
         }
+        .bande{
+            position: fixed;
+            top: 0rem;
+            width: 5000px;
+            background: rgb(0, 0, 0);
+            padding: 0.2rem;
+            border-radius: 0px;
+            border: 1px solid rgb(0, 0, 0);
+        }
     </style>
 </head>
 <body>
+
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav-panel" title="Ouvrir le menu de navigation">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
     </button>
+
+    <bande class="bande">
+            <p>Accueil<p>
+        </bande>
+
     <main>
+
         <texte class="presentation">
             <h2>Présentation</h2>
             <p>Youri Alexeïevitch Gagarine est le premier homme à avoir voyagé dans l’espace. Le 12 avril 1961, il a effectué le tout premier vol spatial habité à bord du vaisseau Vostok 1</p>
@@ -89,6 +101,7 @@
                Le vide spatial, où il n’y a pas d’air pour dissiper la chaleur.
                Les forces de lancement, très puissantes lors du décollage d’une fusée.</p>
             </texte>
+
         <section id="nav-panel" class="navigation" aria-hidden="true">
             <ul>
                 <h2>Navigation</h2>
