@@ -15,18 +15,49 @@
             background-repeat: repeat;
             color: #e6eef8;
         }
+        /* Navigation panel (off-canvas by default) */
         .navigation{
             position: fixed;
             top: 1rem;
-            left: 1rem;
-            width: 300px;
+            left: 0;
+            width: 260px;
             max-width: calc(100% - 2rem);
-            background: rgb(0, 0, 0);
+            background: rgba(0, 0, 0, 0.85);
             padding: 1.25rem;
-            border-radius: 8px;
+            border-radius: 0 8px 8px 0;
             border: 1px solid rgba(255,255,255,0.04);
             box-shadow: 0 8px 20px rgba(0,0,0,0.4);
             z-index: 20;
+            transform: translateX(-120%); /* hidden off-screen */
+            transition: transform 220ms ease;
+        }
+        .navigation.open{
+            transform: translateX(0);
+        }
+
+        /* Hamburger button */
+        .nav-toggle{
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            width: 44px;
+            height: 38px;
+            display:flex;
+            flex-direction:column;
+            justify-content:space-between;
+            background:transparent;
+            border: none;
+            padding:6px;
+            z-index: 30;
+            cursor:pointer;
+        }
+        .nav-toggle .bar{display:block;height:3px;background:#e6eef8;border-radius:2px}
+        .nav-toggle:focus{outline:2px solid #9ccfff; outline-offset:2px}
+
+        /* Make navigation visible as static on small screens */
+        @media (max-width:720px){
+            .navigation{position: static; transform:none; border-radius:8px; width:auto; margin:1rem}
+            .nav-toggle{display:none}
         }
         .presentation{
             position: fixed;
@@ -44,6 +75,12 @@
     </style>
 </head>
 <body>
+    <!-- Hamburger toggle for navigation (visible on wide screens) -->
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-panel" title="Ouvrir le menu de navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
     <main>
         <texte class="presentation">
             <h2>Présentation</h2>
@@ -57,14 +94,47 @@
                Le vide spatial, où il n’y a pas d’air pour dissiper la chaleur.
                Les forces de lancement, très puissantes lors du décollage d’une fusée.</p>
             </texte>
-        <section class="navigation">
+        <section id="nav-panel" class="navigation" aria-hidden="true">
             <ul>
                 <h2>Navigation</h2>
                 <li><a href="solarsys.html">Système solaire</a></li>
+
                 <li><a href="iss.html">Onglet sur l'iss</a></li>
                 <li><a href="daily-astre.html">Daily Astre</a></li>
             </ul>
         </section>
     </main>
+    <script>
+        (function(){
+            var btn = document.querySelector('.nav-toggle');
+            var panel = document.getElementById('nav-panel');
+            if (!btn || !panel) return;
+
+            function setState(open){
+                if (open){
+                    panel.classList.add('open');
+                    panel.setAttribute('aria-hidden', 'false');
+                    btn.setAttribute('aria-expanded','true');
+                } else {
+                    panel.classList.remove('open');
+                    panel.setAttribute('aria-hidden', 'true');
+                    btn.setAttribute('aria-expanded','false');
+                }
+            }
+
+            btn.addEventListener('click', function(){
+                setState(!panel.classList.contains('open'));
+            });
+
+            // Close when a link inside the panel is clicked
+            panel.addEventListener('click', function(e){
+                var a = e.target.closest && e.target.closest('a');
+                if (a) setState(false);
+            });
+
+            // Close with Escape
+            document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setState(false); });
+        })();
+    </script>
 </body>
 </html>

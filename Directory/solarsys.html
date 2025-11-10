@@ -13,9 +13,22 @@
             background-size: cover;
             background-position: center center;
             background-repeat: repeat;
+            background-attachment: fixed;
             color: #e6eef8;
         }
-        .card{max-height:-100vh;max-width:800px;margin:20rem auto;background:rgba(250,255,255,0.03);padding:1.5rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04)}
+        .card{
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 320px;
+            max-width: calc(100% - 2rem);
+            background: rgba(250,255,255,0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.04);
+            z-index: 10;
+        }
     </style>
 <body>
     <div class="card">
