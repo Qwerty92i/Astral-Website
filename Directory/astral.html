@@ -7,27 +7,41 @@
     <style>
         body{
             font-family: Arial, Helvetica, sans-serif;
-            margin: 0; 
-            min-height: 65vh;
-            background-color: rgb(14, 10, 59);
-            background-size: cover;
-            background-position: center center;
-            background-repeat: repeat;
+            background-image: url("Assets/Accueilimg.png");
             color: #e6eef8;
+            min-height: 5vh;
         }
+        .topbar{
+            position:fixed;
+            top:0;
+            left:0;
+            right:0;
+            height: 70px;
+            display:flex;
+            align-items:center;
+            gap:1rem;
+            padding:0 1rem;
+            z-index:40;
+        }
+        .brand-logo{margin-left:2rem;width:auto;display:block}
+        .topnav{display:flex;gap:100px;align-items:center;margin-left:30rem}
+        .topnav a{color:#d8e3f0;text-decoration:none;font-size:2rem;padding:10px 9px;border-radius:7px}
+    
+
+
         .navigation{
             position: fixed;
             top: 1rem;
-            left: 0;
+            right: 0; 
             width: 260px;
             max-width: calc(100% - 2rem);
             background: rgba(0, 0, 0, 0.85);
             padding: 1.25rem;
-            border-radius: 0 8px 8px 0;
+            border-radius: 8px 0 0 8px;
             border: 1px solid rgba(255,255,255,0.04);
             box-shadow: 0 8px 20px rgba(0,0,0,0.4);
             z-index: 20;
-            transform: translateX(-120%); 
+            transform: translateX(120%); 
             transition: transform 220ms ease;
         }
         .navigation.open{
@@ -35,8 +49,7 @@
         }
         .nav-toggle{
             position: fixed;
-            top: 1rem;
-            left: 1rem;
+            right: 1rem;
             width: 44px;
             height: 38px;
             display:flex;
@@ -45,7 +58,7 @@
             background:transparent;
             border: none;
             padding:6px;
-            z-index: 30;
+            z-index: 50;
             cursor:pointer;
         }
         .nav-toggle .bar{display:block;height:3px;background:#ffffff;border-radius:2px}
@@ -64,28 +77,27 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.4);
             z-index: 20;
         }
-        .bande{
-            position: fixed;
-            top: 0rem;
-            width: 5000px;
-            background: rgb(0, 0, 0);
-            padding: 0.2rem;
-            border-radius: 0px;
-            border: 1px solid rgb(0, 0, 0);
-        }
     </style>
 </head>
 <body>
 
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-panel" title="Ouvrir le menu de navigation">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-    </button>
 
-    <bande class="bande">
-            <p>Accueil<p>
-        </bande>
+    <header class="topbar">
+        <div class="brand">
+            <img src="logoastral.png" alt="Astral" class="brand-logo" width="160" height="72">
+        </div>
+        <nav class="topnav" aria-label="Navigation principale">
+            <a href="astral.html">Accueil</a>
+            <a href="solarsys.html">Système solaire</a>
+            <a href="iss.html">ISS</a>
+            <a href="daily-astre.html">Daily Astre</a>
+        </nav>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-panel" title="Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </header>
 
     <main>
 
@@ -110,10 +122,6 @@
         <section id="nav-panel" class="navigation" aria-hidden="true">
             <ul>
                 <h2>Navigation</h2>
-                <li><a href="solarsys.html">Système solaire</a></li>
-
-                <li><a href="iss.html">Onglet sur l'iss</a></li>
-                <li><a href="daily-astre.html">Daily Astre</a></li>
                 <li><a href="connexion.html">Connexion</a></li>
             </ul>
         </section>
