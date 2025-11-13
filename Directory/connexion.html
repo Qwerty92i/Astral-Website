@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 </head>
 <body>
-    <form>
+    <form id="loginForm">
          <h1>Se connecter</h1>
          <div class="social-media">
              <p><i class="fab fa-google"></i></p>
@@ -18,9 +18,9 @@
          </div>
          <p class="choose-email">ou utiliser mon adresse e-mail :</p>
          
-         <div class="inputs">
-             <input type="email" placeholder="Email">
-             <input type="password" placeholder="Mot de passe">
+         <div class="inputs"> 
+             <input type="email" placeholder="Email" id="username">
+             <input type="password" placeholder="Mot de passe" id="password">
              </div>
 
              <p class="inscription">Je n'ai pas de <Span>compte</Span>. Je m'en <span>crée</span> un.</p>
@@ -33,7 +33,7 @@
     <script>
         // Vérifie si l'utilisateur est déjà connecté
     if (localStorage.getItem("isLoggedIn") === "true") {
-      window.location.href = "dashboard.html";
+      window.location.href = "astral.html";
     }
 
     // Gère la soumission du formulaire
@@ -53,7 +53,7 @@
         localStorage.setItem("username", username);
 
         // Redirection
-        window.location.href = "dashboard.html";
+        window.location.href = "astral.html";
       } else {
         document.getElementById("error").textContent = "Nom d'utilisateur ou mot de passe incorrect.";
       }

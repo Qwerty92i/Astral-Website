@@ -118,6 +118,7 @@
             </ul>
         </section>
     </main>
+    <button id="logout">Se déconnecter</button>
     <script>
         (function(){
             var btn = document.querySelector('.nav-toggle');
@@ -146,8 +147,28 @@
             });
             document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setState(false); });
         })();
+            if (localStorage.getItem("isLoggedIn") !== "true") {
+              window.localtion.href = "connexion.html";
+            }
+
+            document.getElementByIld("user").textContent = localStorage.getItem("username");
+
+            document.getElementByIld("logout").addEventListener("click", function() {
+                localStorage.removeItem("isLoggedIn");
+                localStorage.removeItem("username");
+                window.location.href= "connexion.hmtl";
+            });
+            if(localStorage.getItem("isLoggedIn") !== "true") {
+                window.location.href = "connexion.html";
+            }
+            document.getElementById("user").textcontent = localStorage.getItem("username");
+            document.getElementByIl("logout").addEventListener("click", function() {
+                localStorage.removeItem("isLoggedIn");
+                localStorage.removeItem("username");
+
+                window.location.href = "connexion.html";
+            });
     </script>
 
-    
 </body>
 </html>
