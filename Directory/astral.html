@@ -161,7 +161,7 @@
 
             document.getElementByIld("user").textContent = localStorage.getItem("username");
 
-            document.getElementByIld("logout").addEventListener("click", function() {
+            document.getElementByIld("logout").addEventListener("click", function(e) {
                 localStorage.removeItem("isLoggedIn");
                 localStorage.removeItem("username");
                 window.location.href= "connexion.hmtl";
