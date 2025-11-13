@@ -23,9 +23,9 @@
             padding:0 1rem;
             z-index:40;
         }
-        .brand-logo{margin-left:2rem;width:auto;display:block}
-        .topnav{display:flex;gap:100px;align-items:center;margin-left:30rem}
-        .topnav a{color:#d8e3f0;text-decoration:none;font-size:2rem;padding:10px 9px;border-radius:7px}
+        .brand-logo{margin-left:2rem;width:auto;display:block; margin-top: 10px;}
+        .topnav{display:flex;gap:95px;align-items:center;margin-left:30rem}
+        .topnav a{color:#d8e3f0;text-decoration:none;font-size:1.75rem;padding:10px 9px;border-radius:7px}
     
 
 
@@ -65,18 +65,31 @@
         .nav-toggle:focus{outline:2px solid #ffffff; outline-offset:2px}
         
         .presentation{
-            position: fixed;
-            top: 4rem;
-            right: 1rem;
-            width: 450px;
-            max-width: calc(100% - 2rem);
-            background: rgba(0, 0, 0, 0.6);
-            padding: 1.25rem;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.04);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            z-index: 20;
+            position: relative;
+            padding: 1rem;
+            margin-top: 90px;
         }
+        .presentation-card{
+            display:block;
+            width: 320px;
+            max-width: calc(100% - 2rem);
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow: 0 3px 20px rgba(0,0,0,0.4);
+            text-align: left;
+            cursor: pointer;
+        }
+        .presentation-card h2{margin:0.5rem; }
+        .presentation-card .teaser{opacity:0.95}
+
+        .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(3,6,23,0.6);z-index:60}
+        .modal[hidden]{display:none}
+        .modal-content{background:#071124;color:#e6eef8;max-width:900px;width:calc(100% - 2rem);max-height:90vh;overflow:auto;border-radius:10px;padding:1.5rem;box-shadow:0 20px 60px rgba(0,0,0,0.6);position:relative}
+        .modal-close{position:absolute;top:.5rem;right:.5rem;background:transparent;border:0;color:#e6eef8;font-size:1.2rem;cursor:pointer}
+    .modal-body h2{margin-top:0}
     </style>
 </head>
 <body>
@@ -101,23 +114,30 @@
 
     <main>
 
-        <texte class="presentation">
-            <h2>Petite information à retenir :</h2>
-            <h3>premier austronnote⬇️</h3>
-            <p>Youri Alexeïevitch Gagarine est le premier homme à avoir voyagé dans l’espace. Le 12 avril 1961, il a effectué le tout premier vol spatial habité à bord du vaisseau Vostok 1</p>
-            <h3>premier homme a avoir marché sur la Lune⬇️</h3>
-            <p>Le 20 juillet 1969, Neil Armstrong est devenu le premier homme à marcher sur la Lune lors de la mission Apollo 11. Ce moment historique est aujourd’hui célébré sous le nom de #Moonday.</p>
-            <h3>La premiere fusée dans le monde⬇️</h3>
-            <P>Le 4 octobre 1957, les Soviétiques, dirigés par l’ingénieur Sergueï Korolev, prennent la tête de la course à l’espace : la fusée Semiorka place sur orbite le premier satellite artificiel de l’histoire, Spoutnik 1.</P>
-            <h3>La fusée la plus puissante du monde⬇️</h3>
-            <P>Le Starship, la fusée lunaire développée par SpaceX, bat tous les records. Ce géant métallique mesure près de 120 mètres de haut et pèse plus  de 5 000 tonnes au décollage ! Son premier étage, le Super Heavy, est équipé de 33 moteurs Raptor capables de placer jusqu’à 150 tonnes de charge utile en orbite basse. Conçu pour être entièrement réutilisable, le Starship représente une étape majeure dans la conquête spatiale moderne.</P>
-            <h3>Les technologie utilisé et dans quelle condition⬇️</h3>
-            <p>L’apesanteur, qui empêche les objets de rester en place.
-               Les températures extrêmes, pouvant varier de plusieurs centaines de degrés selon l’exposition au Soleil ou à l’ombre.
-               Les radiations cosmiques, qui peuvent endommager les instruments électroniques.
-               Le vide spatial, où il n’y a pas d’air pour dissiper la chaleur.
-               Les forces de lancement, très puissantes lors du décollage d’une fusée.</p>
-            </texte>
+        <section class="presentation">
+            <button class="presentation-card" aria-haspopup="dialog" aria-controls="presentation-modal">
+                <h2>Petite information à retenir :</h2>
+                <p class="teaser">Cliquez ici pour lire une courte présentation sur l'histoire et les technologies spatiales.</p>
+            </button>
+            <div id="presentation-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+                <div class="modal-content" role="document">
+                    <button class="modal-close" aria-label="Fermer la présentation">✕</button>
+                    <div class="modal-body">
+                        <h2>Petite information à retenir :</h2>
+                        <h3>Premier astronaute</h3>
+                        <p>Youri Alexeïevitch Gagarine est le premier homme à avoir voyagé dans l’espace. Le 12 avril 1961, il a effectué le tout premier vol spatial habité à bord du vaisseau Vostok 1.</p>
+                        <h3>Premier homme a avoir marché sur la Lune</h3>
+                        <p>Le 20 juillet 1969, Neil Armstrong est devenu le premier homme à marcher sur la Lune lors de la mission Apollo 11. Ce moment historique est aujourd’hui célébré sous le nom de #Moonday.</p>
+                        <h3>La premiere fusée dans le monde</h3>
+                        <p>Le 4 octobre 1957, les Soviétiques, dirigés par l’ingénieur Sergueï Korolev, prennent la tête de la course à l’espace : la fusée Semiorka place sur orbite le premier satellite artificiel de l’histoire, Spoutnik 1.</p>
+                        <h3>La fusée la plus puissante du monde</h3>
+                        <p>Le Starship, la fusée lunaire développée par SpaceX, bat tous les records. Ce géant métallique mesure près de 120 mètres de haut et pèse plus de 5 000 tonnes au décollage. Son premier étage, le Super Heavy, est équipé de 33 moteurs Raptor capables de placer jusqu’à 150 tonnes de charge utile en orbite basse. Conçu pour être entièrement réutilisable, le Starship représente une étape majeure dans la conquête spatiale moderne.</p>
+                        <h3>Les technologies utilisées et dans quelles conditions</h3>
+                        <p>L’apesanteur, les températures extrêmes, les radiations cosmiques, le vide spatial et les forces de lancement sont des contraintes majeures à prendre en compte pour les missions spatiales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section id="nav-panel" class="navigation" aria-hidden="true">
             <ul>
@@ -131,51 +151,47 @@
         (function(){
             var btn = document.querySelector('.nav-toggle');
             var panel = document.getElementById('nav-panel');
-            if (!btn || !panel) return;
-
-            function setState(open){
-                if (open){
-                    panel.classList.add('open');
-                    panel.setAttribute('aria-hidden', 'false');
-                    btn.setAttribute('aria-expanded','true');
-                } else {
-                    panel.classList.remove('open');
-                    panel.setAttribute('aria-hidden', 'true');
-                    btn.setAttribute('aria-expanded','false');
+            if (btn && panel) {
+                function setState(open){
+                    if (open){
+                        panel.classList.add('open');
+                        panel.setAttribute('aria-hidden', 'false');
+                        btn.setAttribute('aria-expanded','true');
+                    } else {
+                        panel.classList.remove('open');
+                        panel.setAttribute('aria-hidden', 'true');
+                        btn.setAttribute('aria-expanded','false');
+                    }
                 }
+                btn.addEventListener('click', function(){ setState(!panel.classList.contains('open')); });
+                panel.addEventListener('click', function(e){ if (e.target.closest && e.target.closest('a')) setState(false); });
+                document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setState(false); });
             }
 
-            btn.addEventListener('click', function(){
-                setState(!panel.classList.contains('open'));
-            });
-
-            panel.addEventListener('click', function(e){
-                var a = e.target.closest && e.target.closest('a');
-                if (a) setState(false);
-            });
-            document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setState(false); });
+            var card = document.querySelector('.presentation-card');
+            var modal = document.getElementById('presentation-modal');
+            var closeBtn = modal && modal.querySelector('.modal-close');
+            if (card && modal) {
+                function openModal(){
+                    modal.hidden = false;
+                    modal.setAttribute('aria-hidden','false');
+                    document.documentElement.style.overflow = 'hidden';
+                    document.body.style.overflow = 'hidden';
+                    if (closeBtn) closeBtn.focus();
+                }
+                function closeModal(){
+                    modal.hidden = true;
+                    modal.setAttribute('aria-hidden','true');
+                    document.documentElement.style.overflow = '';
+                    document.body.style.overflow = '';
+                    card.focus();
+                }
+                card.addEventListener('click', openModal);
+                if (closeBtn) closeBtn.addEventListener('click', closeModal);
+                modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+                document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+            }
         })();
-            if (localStorage.getItem("isLoggedIn") !== "true") {
-              window.localtion.href = "connexion.html";
-            }
-
-            document.getElementByIld("user").textContent = localStorage.getItem("username");
-
-            document.getElementByIld("logout").addEventListener("click", function() {
-                localStorage.removeItem("isLoggedIn");
-                localStorage.removeItem("username");
-                window.location.href= "connexion.hmtl";
-            });
-            if(localStorage.getItem("isLoggedIn") !== "true") {
-                window.location.href = "connexion.html";
-            }
-            document.getElementById("user").textcontent = localStorage.getItem("username");
-            document.getElementByIl("logout").addEventListener("click", function() {
-                localStorage.removeItem("isLoggedIn");
-                localStorage.removeItem("username");
-
-                window.location.href = "connexion.html";
-            });
     </script>
 
 </body>
