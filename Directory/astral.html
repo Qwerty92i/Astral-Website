@@ -4,98 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Astral</title>
-    <style>
-        body{
-            font-family: Arial, Helvetica, sans-serif;
-            background-image: url("Assets/Accueilimg.png");
-            color: #e6eef8;
-            min-height: 5vh;
-        }
-        .topbar{
-            position:fixed;
-            top:0;
-            left:0;
-            right:0;
-            height: 70px;
-            display:flex;
-            align-items:center;
-            gap:1rem;
-            padding:0 1rem;
-            z-index:40;
-        }
-        .brand-logo{margin-left:2rem;width:auto;display:block; margin-top: 10px;}
-        .topnav{display:flex;gap:95px;align-items:center;margin-left:30rem}
-        .topnav a{color:#d8e3f0;text-decoration:none;font-size:1.75rem;padding:10px 9px;border-radius:7px}
-    
-
-
-        .navigation{
-            position: fixed;
-            top: 1rem;
-            right: 0; 
-            width: 260px;
-            max-width: calc(100% - 2rem);
-            background: rgba(0, 0, 0, 0.85);
-            padding: 1.25rem;
-            border-radius: 8px 0 0 8px;
-            border: 1px solid rgba(255,255,255,0.04);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            z-index: 20;
-            transform: translateX(120%); 
-            transition: transform 220ms ease;
-        }
-        .navigation.open{
-            transform: translateX(0);
-        }
-        .nav-toggle{
-            position: fixed;
-            right: 1rem;
-            width: 44px;
-            height: 38px;
-            display:flex;
-            flex-direction:column;
-            justify-content:space-between;
-            background:transparent;
-            border: none;
-            padding:6px;
-            z-index: 50;
-            cursor:pointer;
-        }
-        .nav-toggle .bar{display:block;height:3px;background:#ffffff;border-radius:2px}
-        .nav-toggle:focus{outline:2px solid #ffffff; outline-offset:2px}
-        
-        .presentation{
-            position: relative;
-            padding: 1rem;
-            margin-top: 90px;
-        }
-        .presentation-card{
-            display:block;
-            width: 320px;
-            max-width: calc(100% - 2rem);
-            background: rgba(0,0,0,0.6);
-            color: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.06);
-            box-shadow: 0 3px 20px rgba(0,0,0,0.4);
-            text-align: left;
-            cursor: pointer;
-        }
-        .presentation-card h2{margin:0.5rem; }
-        .presentation-card .teaser{opacity:0.95}
-
-        .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(3,6,23,0.6);z-index:60}
-        .modal[hidden]{display:none}
-        .modal-content{background:#071124;color:#e6eef8;max-width:900px;width:calc(100% - 2rem);max-height:90vh;overflow:auto;border-radius:10px;padding:1.5rem;box-shadow:0 20px 60px rgba(0,0,0,0.6);position:relative}
-        .modal-close{position:absolute;top:.5rem;right:.5rem;background:transparent;border:0;color:#e6eef8;font-size:1.2rem;cursor:pointer}
-    .modal-body h2{margin-top:0}
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-
-    <header class="topbar">
+     <header class="topbar">
         <div class="brand">
             <img src="logoastral.png" alt="Astral" class="brand-logo" width="160" height="72">
         </div>
@@ -115,11 +27,27 @@
     <main>
 
         <section class="presentation">
-            <button class="presentation-card" aria-haspopup="dialog" aria-controls="presentation-modal">
+            <button class="presentation-card card-1" aria-haspopup="dialog" data-modal="presentation-modal-1" aria-controls="presentation-modal-1">
                 <h2>Petite information à retenir :</h2>
                 <p class="teaser">Cliquez ici pour lire une courte présentation sur l'histoire et les technologies spatiales.</p>
             </button>
-            <div id="presentation-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+
+            <button class="presentation-card card-2" aria-haspopup="dialog" data-modal="presentation-modal-2" aria-controls="presentation-modal-2">
+                <h2>Présentation 2</h2>
+                <p class="teaser">à compléter</p>
+            </button>
+
+            <button class="presentation-card card-3" aria-haspopup="dialog" data-modal="presentation-modal-3" aria-controls="presentation-modal-3">
+                <h2>Présentation 3</h2>
+                <p class="teaser">à compléter</p>
+            </button>
+
+            <button class="presentation-card card-4" aria-haspopup="dialog" data-modal="presentation-modal-4" aria-controls="presentation-modal-4">
+                <h2>Présentation 4</h2>
+                <p class="teaser">à compléter</p>
+            </button>
+
+            <div id="presentation-modal-1" class="modal" role="dialog" aria-modal="true" aria-hidden="true" hidden>
                 <div class="modal-content" role="document">
                     <button class="modal-close" aria-label="Fermer la présentation">✕</button>
                     <div class="modal-body">
@@ -137,6 +65,31 @@
                     </div>
                 </div>
             </div>
+            <div id="presentation-modal-2" class="modal" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+                <div class="modal-content" role="document">
+                    <button class="modal-close" aria-label="Fermer la présentation">✕</button>
+                    <div class="modal-body">
+                        <h2>test</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div id="presentation-modal-3" class="modal" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+                <div class="modal-content" role="document">
+                    <button class="modal-close" aria-label="Fermer la présentation">✕</button>
+                    <div class="modal-body">
+                        <h2>test</h2>
+                    </div>
+                </div>
+            </div>
+            <div id="presentation-modal-4" class="modal" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+                <div class="modal-content" role="document">
+                    <button class="modal-close" aria-label="Fermer la présentation">✕</button>
+                    <div class="modal-body">
+                        <h2>test</h2>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="nav-panel" class="navigation" aria-hidden="true">
@@ -147,73 +100,7 @@
             </ul>
         </section>
     </main>
-    <script>
-        (function(){
-            var btn = document.querySelector('.nav-toggle');
-            var panel = document.getElementById('nav-panel');
-            if (btn && panel) {
-                function setState(open){
-                    if (open){
-                        panel.classList.add('open');
-                        panel.setAttribute('aria-hidden', 'false');
-                        btn.setAttribute('aria-expanded','true');
-                    } else {
-                        panel.classList.remove('open');
-                        panel.setAttribute('aria-hidden', 'true');
-                        btn.setAttribute('aria-expanded','false');
-                    }
-                }
-                btn.addEventListener('click', function(){ setState(!panel.classList.contains('open')); });
-                panel.addEventListener('click', function(e){ if (e.target.closest && e.target.closest('a')) setState(false); });
-                document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setState(false); });
-            }
-
-            var card = document.querySelector('.presentation-card');
-            var modal = document.getElementById('presentation-modal');
-            var closeBtn = modal && modal.querySelector('.modal-close');
-            if (card && modal) {
-                function openModal(){
-                    modal.hidden = false;
-                    modal.setAttribute('aria-hidden','false');
-                    document.documentElement.style.overflow = 'hidden';
-                    document.body.style.overflow = 'hidden';
-                    if (closeBtn) closeBtn.focus();
-                }
-                function closeModal(){
-                    modal.hidden = true;
-                    modal.setAttribute('aria-hidden','true');
-                    document.documentElement.style.overflow = '';
-                    document.body.style.overflow = '';
-                    card.focus();
-                }
-                card.addEventListener('click', openModal);
-                if (closeBtn) closeBtn.addEventListener('click', closeModal);
-                modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
-                document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !modal.hidden) closeModal(); });
-            }
-        })();
-            if (localStorage.getItem("isLoggedIn") !== "true") {
-              window.localtion.href = "connexion.html";
-            }
-
-            document.getElementByIld("user").textContent = localStorage.getItem("username");
-
-            document.getElementByIld("logout").addEventListener("click", function(e) {
-                localStorage.removeItem("isLoggedIn");
-                localStorage.removeItem("username");
-                window.location.href= "connexion.hmtl";
-            });
-            if(localStorage.getItem("isLoggedIn") !== "true") {
-                window.location.href = "connexion.html";
-            }
-            document.getElementById("user").textcontent = localStorage.getItem("username");
-            document.getElementByIl("logout").addEventListener("click", function() {
-                localStorage.removeItem("isLoggedIn");
-                localStorage.removeItem("username");
-
-                window.location.href = "connexion.html";
-            });
-    </script>
+    <script src="scripts.js" defer></script>
 
 </body>
 </html>
