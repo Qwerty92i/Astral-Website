@@ -96,11 +96,80 @@
             <ul>
                 <h2>Navigation</h2>
                 <li><a href="connexion.html">Connexion</a></li>
-                <button id="logout">Se déconnecter</button>
             </ul>
         </section>
     </main>
+<<<<<<< Updated upstream
     <script src="scripts.js" defer></script>
+=======
+    <script>
+        (function(){
+            var btn = document.querySelector('.nav-toggle');
+            var panel = document.getElementById('nav-panel');
+            if (btn && panel) {
+                function setState(open){
+                    if (open){
+                        panel.classList.add('open');
+                        panel.setAttribute('aria-hidden', 'false');
+                        btn.setAttribute('aria-expanded','true');
+                    } else {
+                        panel.classList.remove('open');
+                        panel.setAttribute('aria-hidden', 'true');
+                        btn.setAttribute('aria-expanded','false');
+                    }
+                }
+                btn.addEventListener('click', function(){ setState(!panel.classList.contains('open')); });
+                panel.addEventListener('click', function(e){ if (e.target.closest && e.target.closest('a')) setState(false); });
+                document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setState(false); });
+            }
+
+            var card = document.querySelector('.presentation-card');
+            var modal = document.getElementById('presentation-modal');
+            var closeBtn = modal && modal.querySelector('.modal-close');
+            if (card && modal) {
+                function openModal(){
+                    modal.hidden = false;
+                    modal.setAttribute('aria-hidden','false');
+                    document.documentElement.style.overflow = 'hidden';
+                    document.body.style.overflow = 'hidden';
+                    if (closeBtn) closeBtn.focus();
+                }
+                function closeModal(){
+                    modal.hidden = true;
+                    modal.setAttribute('aria-hidden','true');
+                    document.documentElement.style.overflow = '';
+                    document.body.style.overflow = '';
+                    card.focus();
+                }
+                card.addEventListener('click', openModal);
+                if (closeBtn) closeBtn.addEventListener('click', closeModal);
+                modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+                document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+            }
+        })();
+    </script>
+     
+     <button id="logout">Se déconnecter</button>
+
+    <script>
+    // Vérifie si l'utilisateur est connecté
+    if (localStorage.getItem("isLoggedIn") !== "true") {
+      window.location.href = "connexion.html";
+    }
+
+    // Affiche le nom de l'utilisateur
+    document.getElementById("user").textContent = localStorage.getItem("username");
+
+    // Déconnexion
+    document.getElementById("logout").addEventListener("click", function() {
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("username");
+
+      // Retour vers connexion.html
+      window.location.href = "connexion.html";
+    });
+    </script> 
+>>>>>>> Stashed changes
 
 </body>
 </html>

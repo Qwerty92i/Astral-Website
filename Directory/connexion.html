@@ -31,31 +31,26 @@
     <p id="error" style="color:red;"></p>
     
     <script>
-        // Vérifie si l'utilisateur est déjà connecté
-    if (localStorage.getItem("isLoggedIn") === "true") {
+        if (localStorage.getItem("isLoggedIn") === "true") {
       window.location.href = "astral.html";
     }
 
-    // Gère la soumission du formulaire
+    // Connexion
     document.getElementById("loginForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
 
-      // Identifiants valides (exemple)
-      const validUser = "matcub2008@gmail.com";
+      const validUser = "admin";
       const validPassword = "1234";
 
       if (username === validUser && password === validPassword) {
-        // Stocke l'état de connexion dans localStorage
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("username", username);
-
-        // Redirection
+    
+        // Nouvelle redirection
         window.location.href = "astral.html";
       } else {
-        document.getElementById("error").textContent = "Nom d'utilisateur ou mot de passe incorrect.";
+        document.getElementById("error").textContent = "Identifiants incorrects.";
       }
     });
     </script>
