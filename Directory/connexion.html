@@ -42,11 +42,13 @@
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
 
-      const validUser = "admin";
+      const validUser = "admin@gmail.com";
       const validPassword = "1234";
 
       if (username === validUser && password === validPassword) {
-    
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("username", username);
+
         // Nouvelle redirection
         window.location.href = "astral.html";
       } else {

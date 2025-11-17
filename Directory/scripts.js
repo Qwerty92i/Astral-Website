@@ -52,8 +52,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Login
-    var logoutBtn = document.getElementById('logout');
-    var userEl = document.getElementById('user');
+     logoutBtn = document.getElementById('logout');
+     userEl = document.getElementById('user');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', function () {
             localStorage.removeItem('isLoggedIn');
