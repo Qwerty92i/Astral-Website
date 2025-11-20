@@ -2,15 +2,14 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     margin: 0; 
     min-height: 100vh;
-    background-image: url("Assets/solarsysimg.png");
+    background-image: url("Assets/meteos.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: repeat;
     background-attachment: fixed;
-    color: #e6eef8;
+    color: #ffffff;
 }
 
-/* TOPBAR */
 .topbar{
     position:fixed;
     top:0;
@@ -22,7 +21,7 @@ body{
     gap:1rem;
     padding:0 1rem;
     z-index:40;
-    background: rgba(3, 6, 20, 0.95);
+    background: rgba(6, 10, 29, 0.95);
     backdrop-filter: blur(8px);
 }
 
@@ -52,13 +51,11 @@ body{
     background:rgba(255,255,255,0.08);
 }
 
-/* CONTENU PAGE */
-
 .overlay {
-    background: radial-gradient(circle at top, rgba(0,0,0,0.6), rgba(0,0,0,0.9));
+    background: radial-gradient(circle at top, rgba(0,0,0,0.6), rgba(0, 0, 0, 0.9));
     min-height: 100vh;
     padding: 1.5rem 1rem 3rem;
-    padding-top: 90px; /* pour ne pas passer sous la topbar */
+    padding-top: 90px; 
 }
 
 .card{
@@ -67,7 +64,7 @@ body{
     background: rgba(10,15,30,0.85);
     padding: 1.5rem 1.75rem;
     border-radius: 14px;
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid rgba(226, 115, 115, 0.808);
     box-shadow: 0 18px 40px rgba(0,0,0,0.6);
     backdrop-filter: blur(6px);
 }
@@ -143,7 +140,7 @@ a{
 }
 
 .neo-card {
-    background: linear-gradient(135deg, rgba(17,27,60,0.95), rgba(35,13,54,0.9));
+    background: linear-gradient(135deg, rgba(42, 54, 97, 0.95), rgba(35,13,54,0.9));
     border-radius: 10px;
     padding: 0.75rem 0.8rem;
     border: 1px solid rgba(151, 178, 255, 0.28);
@@ -173,7 +170,7 @@ a{
 }
 
 .neo-chip.danger {
-    background: rgba(255, 98, 98, 0.14);
+    background: rgba(255, 0, 0, 0.14);
     border: 1px solid rgba(255, 124, 124, 0.9);
     color: #ffd0d0;
 }
