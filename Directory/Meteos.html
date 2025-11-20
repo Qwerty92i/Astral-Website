@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Astre – Météores</title>
+    <link rel="stylesheet" href="meteos.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <img src="logoastral.png" alt="Astral" class="brand-logo" width="160" height="72">
+        </div>
+        <nav class="topnav" aria-label="Navigation principale">
+            <a href="astral.html">Accueil</a>
+            <a href="solarsys.html">Système solaire</a>
+            <a href="iss.html">ISS</a>
+            <a href="daily-astre.html">Daily Astre</a>
+            <a href="Meteos.html">Meteos</a>
+        </nav>
+    </header>
+
+    <div class="overlay">
+        <div class="card">
+            <h1>Meteos <span>/ NASA NEO API</span></h1>
+            <p>Bienvenue sur la page <strong>Météores & astéroïdes</strong>.</p> 
+            <p>Ici, tu peux jeter un œil à quelques astéroïdes suivis par la NASA : leur taille approximative
+               et si oui ou non ils sont considérés comme <em>potentiellement dangereux</em>.</p>
+
+            <div id="neos">
+                <div class="neos-header">
+                    <div class="neos-title">Astéroïdes proches de la Terre</div>
+                    <div class="neos-subtitle">Données en direct depuis l’API NEO de la NASA</div>
+                </div>
+                <p class="loading" id="neos-loading">Chargement des astéroïdes...</p>
+                <p class="error" id="neos-error" style="display:none;"></p>
+                <ul class="neo-list" id="neos-list"></ul>
+        </div>
+    </div>
+    <script src="meteos.js"></script>
+</body>
+</html>
