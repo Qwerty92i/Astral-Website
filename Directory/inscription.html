@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+</head>
+<body>
+    <form id="loginForm">
+         <h1>Inscription</h1>
+         <div class="social-media">
+             <p><i class="fab fa-google"></i></p>
+             <p><i class="fab fa-youtube"></i></p>
+             <p><i class="fab fa-facebook-f"></i></p>
+             <p><i class="fab fa-twitter"></i></p>
+         </div>
+         <p class="choose-email">ou utiliser mon adresse e-mail :</p>
+         
+         <div class="inputs"> 
+             <input type="email" placeholder="Email" id="username">
+             <input type="password" placeholder="Mot de passe" id="password">
+             <input type="identifiant" placeholder="Identifiant" id="identifiant">
+         </div>
+
+             <div align="center">
+                 <button type="submit">Se connecter</button>   
+                 <p><a href="astral.html" style="color:#a9d6ff">🏠 Retour à l'accueil</a></p>             
+             </div>
+    </from> 
+    <p id="error" style="color:red;"></p>
+    
+    <script>
+        if (localStorage.getItem("isLoggedIn") === "true") {
+      window.location.href = "astral.html";
+    }
+
+    // Connexion
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const validUser = "admin@gmail.com";
+      const validPassword = "1234";
+
+      if (username === validUser && password === validPassword) {
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("username", username);
+
+        // Nouvelle redirection
+        window.location.href = "astral.html";
+      } else {
+        document.getElementById("error").textContent = "Identifiants incorrects.";
+      }
+    });
+    </script>
+</body>
+</html>
