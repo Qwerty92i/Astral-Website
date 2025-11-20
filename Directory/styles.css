@@ -96,6 +96,11 @@ body{
     left: 1080px;
 }
 
+.card-5 {
+    top: 0;
+    left: 1440px;
+}
+
 .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(3,6,23,0.6);z-index:60}
 .modal[hidden]{display:none}
 .modal-content{background:#071124;color:#e6eef8;max-width:900px;width:calc(100% - 2rem);max-height:90vh;overflow:auto;border-radius:10px;padding:1.5rem;box-shadow:0 20px 60px rgba(0,0,0,0.6);position:relative}
