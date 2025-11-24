@@ -1,61 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>S'inscrire - Astral</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+    <style>
+        .auth-toggle {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .auth-toggle p {
+            font-size: 14px;
+            margin: 0;
+        }
+        .auth-toggle a {
+            color: #eb7371;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .auth-toggle a:hover {
+            text-decoration: underline;
+        }
+        .success-message {
+            color: #4caf50;
+            text-align: center;
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 <body>
-    <form id="loginForm">
-         <h1>Inscription</h1>
-         <div class="social-media">
-             <p><i class="fab fa-google"></i></p>
-             <p><i class="fab fa-youtube"></i></p>
-             <p><i class="fab fa-facebook-f"></i></p>
-             <p><i class="fab fa-twitter"></i></p>
-         </div>
-         <p class="choose-email">ou utiliser mon adresse e-mail :</p>
-         
-         <div class="inputs"> 
-             <input type="email" placeholder="Email" id="username">
-             <input type="password" placeholder="Mot de passe" id="password">
-             <input type="identifiant" placeholder="Identifiant" id="identifiant">
-         </div>
+    <form id="registerForm">
+        <div class="auth-toggle">
+            <p>Déjà inscrit? <a href="connexion.html">Se connecter</a></p>
+        </div>
 
-             <div align="center">
-                 <button type="submit">Se connecter</button>   
-                 <p><a href="astral.html" style="color:#a9d6ff">🏠 Retour à l'accueil</a></p>             
-             </div>
-    </from> 
-    <p id="error" style="color:red;"></p>
+        <h1>S'inscrire</h1>
+
+        <p class="choose-email">Créer un nouveau compte :</p>
+        
+        <div class="inputs"> 
+            <input type="email" placeholder="Email" id="registerEmail" required>
+            <input type="password" placeholder="Mot de passe" id="registerPassword" required>
+            <input type="password" placeholder="Confirmer le mot de passe" id="registerConfirmPassword" required>
+        </div>
+
+        <div align="center">
+            <button type="submit">S'inscrire</button>   
+            <p><a href="astral.html" style="color:#a9d6ff">🏠 Retour à l'accueil</a></p>             
+        </div>
+    </form>
+
+    <p id="error" style="color: #eb7371; text-align: center; margin-top: 1rem;"></p>
+    <p id="success" style="color: #4caf50; text-align: center; margin-top: 1rem;"></p>
     
     <script>
+        // Vérifier si l'utilisateur est déjà connecté
         if (localStorage.getItem("isLoggedIn") === "true") {
-      window.location.href = "astral.html";
-    }
+            window.location.href = "astral.html";
+        }
 
-    // Connexion
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+        // Inscription
+        document.getElementById("registerForm").addEventListener("submit", async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById("registerEmail").value;
+            const password = document.getElementById("registerPassword").value;
+            const confirmPassword = document.getElementById("registerConfirmPassword").value;
 
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
+            document.getElementById("error").textContent = '';
+            document.getElementById("success").textContent = '';
 
-      const validUser = "admin@gmail.com";
-      const validPassword = "1234";
+            // Validation côté client
+            if (password.length < 6) {
+                document.getElementById("error").textContent = "Le mot de passe doit contenir au moins 6 caractères.";
+                return;
+            }
 
-      if (username === validUser && password === validPassword) {
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("username", username);
+            if (password !== confirmPassword) {
+                document.getElementById("error").textContent = "Les mots de passe ne correspondent pas.";
+                return;
+            }
 
-        // Nouvelle redirection
-        window.location.href = "astral.html";
-      } else {
-        document.getElementById("error").textContent = "Identifiants incorrects.";
-      }
-    });
+            try {
+                const response = await fetch('http://localhost:3000/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await response.json();
+
+                if (response.ok) {
+                    document.getElementById("success").textContent = "✓ Compte créé avec succès! Redirection vers la connexion...";
+                    document.getElementById("registerForm").reset();
+                    setTimeout(() => {
+                        window.location.href = "connexion.html";
+                    }, 2000);
+                } else {
+                    document.getElementById("error").textContent = "✗ " + (data.message || "Erreur lors de l'inscription.");
+                }
+            } catch (error) {
+                document.getElementById("error").textContent = "✗ Erreur serveur. Vérifiez que le serveur est lancé (npm start).";
+                console.error('Erreur:', error);
+            }
+        });
     </script>
 </body>
 </html>

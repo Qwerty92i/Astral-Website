@@ -1,0 +1,21 @@
+{
+  "name": "astral-website-backend",
+  "version": "1.0.0",
+  "description": "Backend server for Astral Website authentication with SQLite",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "bcryptjs": "^2.4.3",
+    "sqlite3": "^5.1.6",
+    "sqlite": "^5.0.1"
+  },
+  "keywords": ["auth", "express", "sqlite"],
+  "author": "",
+  "license": "ISC"
+}

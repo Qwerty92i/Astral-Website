@@ -1,61 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Connexion - Astral</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+    <style>
+        .auth-toggle {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .auth-toggle p {
+            font-size: 14px;
+            margin: 0;
+        }
+        .auth-toggle a {
+            color: #eb7371;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .auth-toggle a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <form id="loginForm">
-         <h1>Se connecter</h1>
-         <div class="social-media">
-             <p><i class="fab fa-google"></i></p>
-             <p><i class="fab fa-youtube"></i></p>
-             <p><i class="fab fa-facebook-f"></i></p>
-             <p><i class="fab fa-twitter"></i></p>
-         </div>
-         <p class="choose-email">ou utiliser mon adresse e-mail :</p>
-         
-         <div class="inputs"> 
-             <input type="email" placeholder="Email" id="username">
-             <input type="password" placeholder="Mot de passe" id="password">
-             </div>
+        <div class="auth-toggle">
+            <p>Pas encore inscrit? <a href="inscription.html">S'inscrire</a></p>
+        </div>
 
-             <p class="inscription">Je n'ai pas de <Span>compte</Span>. Je m'en <span>crée</span> un.</p>
-             <div align="center">
-                 <button type="submit">Se connecter</button>   
-                 <p><a href="astral.html" style="color:#a9d6ff">🏠 Retour à l'accueil</a></p>             
-             </div>
-    </from> 
-    <p id="error" style="color:red;"></p>
+        <h1>Se connecter</h1>
+        <div class="social-media">
+            <p><i class="fab fa-google"></i></p>
+            <p><i class="fab fa-youtube"></i></p>
+            <p><i class="fab fa-facebook-f"></i></p>
+            <p><i class="fab fa-twitter"></i></p>
+        </div>
+        <p class="choose-email">ou utiliser mon adresse e-mail :</p>
+         
+        <div class="inputs"> 
+            <input type="email" placeholder="Email" id="loginEmail" required>
+            <input type="password" placeholder="Mot de passe" id="loginPassword" required>
+        </div>
+
+        <div align="center">
+            <button type="submit">Se connecter</button>   
+            <p><a href="astral.html" style="color:#a9d6ff">🏠 Retour à l'accueil</a></p>             
+        </div>
+    </form>
+
+    <p id="error" style="color: #eb7371; text-align: center; margin-top: 1rem;"></p>
     
     <script>
         if (localStorage.getItem("isLoggedIn") === "true") {
-      window.location.href = "astral.html";
-    }
+            window.location.href = "astral.html";
+        }
 
-    // Connexion
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+        // Connexion
+        document.getElementById("loginForm").addEventListener("submit", async function(e) {
+            e.preventDefault();
+            const email = document.getElementById("loginEmail").value;
+            const password = document.getElementById("loginPassword").value;
 
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
+            document.getElementById("error").textContent = '';
 
-      const validUser = "admin@gmail.com";
-      const validPassword = "1234";
+            try {
+                const response = await fetch('http://localhost:3000/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await response.json();
 
-      if (username === validUser && password === validPassword) {
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("username", username);
-
-        // Nouvelle redirection
-        window.location.href = "astral.html";
-      } else {
-        document.getElementById("error").textContent = "Identifiants incorrects.";
-      }
-    });
+                if (response.ok) {
+                    localStorage.setItem("isLoggedIn", "true");
+                    localStorage.setItem("username", email);
+                    window.location.href = "astral.html";
+                } else {
+                    document.getElementById("error").textContent = "✗ " + (data.message || "Identifiants incorrects.");
+                }
+            } catch (error) {
+                document.getElementById("error").textContent = "✗ Erreur serveur. Vérifiez que le serveur est lancé (npm start).";
+                console.error('Erreur:', error);
+            }
+        });
     </script>
 </body>
 </html>
