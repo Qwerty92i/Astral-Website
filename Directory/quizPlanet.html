@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="quiz1style.css">
+</head>
+<body>
+    <div class="app">
+        <h1>Simple Quiz</h1>
+        <div class="quiz">
+            <h2 id="question">Question</h2>
+            <div id="answer-buttons">
+                <!-- Les boutons seront créés en JS -->
+            </div>
+            <button id="next-btn">Next</button>
+        </div>
+    </div>
+
+    <script>
+        // 1. Ton tableau doit plutôt s'appeler "questions"
+        const questions = [
+            {
+                question: "c'est quoi mars?",
+                answers: [
+                    { text: "un mois", correct: false },
+                    { text: "une planette chaude", correct: true },
+                    { text: "une planette froide", correct: false },
+                    { text: "un truc", correct: false },
+                ]
+            },
+            {
+                question: "qu'elle est la plus grande planette?",
+                answers: [
+                    { text: "jupiterre", correct: false },
+                    { text: "soleil", correct: true },
+                    { text: "terre", correct: false },
+                    { text: "mars", correct: false },
+                ]
+            },
+            {
+                question: "la quelle est solide?",
+                answers: [
+                    { text: "terre", correct: true },
+                    { text: "jupiterre", correct: false },
+                    { text: "neptune", correct: false },
+                    { text: "octobre", correct: false },
+                ]
+            },
+            {
+                question: "Which is the largest ocean?",
+                answers: [
+                    { text: "Atlantic", correct: false },
+                    { text: "Pacific", correct: true },
+                    { text: "Indian", correct: false },
+                    { text: "Arctic", correct: false },
+                ]
+            }
+        ];
+
+        const questionElement = document.getElementById("question");
+        const answerButtons = document.getElementById("answer-buttons");
+        const nextButton = document.getElementById("next-btn");
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            nextButton.innerHTML = "Next";
+            showQuestion();
+        }
+
+        function showQuestion() {
+            resetState();
+            let currentQuestion = questions[currentQuestionIndex];
+            let questionNo = currentQuestionIndex + 1;
+            // ICI tu avais "currentQuestion. question" coupé en 2 lignes
+            questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
+
+            // Génération des boutons de réponses
+            currentQuestion.answers.forEach(answer => {
+                // ICI c'est "document" (minuscule), pas "Document"
+                const button = document.createElement("button");
+                button.innerHTML = answer.text;
+                // ICI c'est "classList", pas "classlist"
+                button.classList.add("btn");
+                if (answer.correct) {
+                    button.dataset.correct = "true";
+                }
+                button.addEventListener("click", selectAnswer);
+                answerButtons.appendChild(button);
+            });
+        }
+
+        function resetState() {
+            nextButton.style.display = "none";
+            // On supprime tous les anciens boutons avant d'afficher les nouveaux
+            while (answerButtons.firstChild) {
+                answerButtons.removeChild(answerButtons.firstChild);
+            }
+        }
+
+        function selectAnswer(e) {
+            const selectedBtn = e.target;
+            const isCorrect = selectedBtn.dataset.correct === "true";
+            if (isCorrect) {
+                selectedBtn.classList.add("correct");
+                score++;
+            } else {
+                selectedBtn.classList.add("incorrect");
+            }
+
+            // On désactive tous les boutons et on montre la bonne réponse
+            Array.from(answerButtons.children).forEach(button => {
+                if (button.dataset.correct === "true") {
+                    button.classList.add("correct");
+                }
+                button.disabled = true;
+            });
+
+            nextButton.style.display = "block";
+        }
+
+        function showScore() {
+            resetState();
+            questionElement.innerHTML = `Ton score : ${score} / ${questions.length}`;
+            nextButton.innerHTML = "Rejouer";
+            nextButton.style.display = "block";
+        }
+
+        function handleNextButton() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion();
+            } else {
+                showScore();
+            }
+        }
+
+        nextButton.addEventListener("click", () => {
+            if (currentQuestionIndex < questions.length) {
+                handleNextButton();
+            } else {
+                startQuiz();
+            }
+        });
+
+        startQuiz();
+    </script>
+    <style>
+        * {
+    margin:0;
+    padding:0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background: #001e4d;
+}
+.app{
+    background: #fff;
+    width: 90%;
+    max-width: 600px;
+    margin: 100px auto 0;
+    border-radius: 10px;
+    padding: 30px;
+}
+.app h1{
+    font-size: 25px;
+    color: #001e4d;
+    font-weight: 600;
+    border-bottom: 1px solid #333;
+    padding-bottom: 30px;
+}
+.quiz{
+    padding: 20px 0;
+}
+.quiz h2{
+    font-size: 18px;
+    color: #001e4d;
+    font-weight: 600;
+}
+.btn{
+    background: #fff;
+    color: #222;
+    font-weight: 500;
+    width: 100%;
+    border: 1px solid #222;
+    padding: 10px;
+    margin: 10px 0;
+    text-align:left ;
+    border-radius: 4px;
+    cursor: pointer; 
+    transition: all 0.3s;
+}
+.btn:hover{
+    background: #222;
+    color: #fff;
+
+}
+#next-btn{
+    background: #222;
+    color: #fff;
+    font-weight: 500;
+    width: 150px;
+    border: 0;
+    padding: 10px;
+    margin: 20px auto 0;
+    border-radius: 4px;
+    cursor: pointer;
+    display: none;   
+}
+    </style>
+</body>
+</html>
