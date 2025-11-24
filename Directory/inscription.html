@@ -56,12 +56,10 @@
     <p id="success" style="color: #4caf50; text-align: center; margin-top: 1rem;"></p>
     
     <script>
-        // Vérifier si l'utilisateur est déjà connecté
         if (localStorage.getItem("isLoggedIn") === "true") {
             window.location.href = "astral.html";
         }
 
-        // Inscription
         document.getElementById("registerForm").addEventListener("submit", async function(e) {
             e.preventDefault();
             
@@ -72,7 +70,6 @@
             document.getElementById("error").textContent = '';
             document.getElementById("success").textContent = '';
 
-            // Validation côté client
             if (password.length < 6) {
                 document.getElementById("error").textContent = "Le mot de passe doit contenir au moins 6 caractères.";
                 return;

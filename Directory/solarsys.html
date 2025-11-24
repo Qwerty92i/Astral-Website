@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Astre</title>
+    <title>Système Solaire</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         body{
             font-family: Arial, Helvetica, sans-serif;
             margin: 0; 
-            min-height: 65vh;
+            min-height: 100vh;
             background-image: url("Assets/solarsysimg.png");
             background-size: cover;
             background-position: center center;
@@ -16,11 +17,29 @@
             background-attachment: fixed;
             color: #e6eef8;
         }
-        .soleil{
+        .soleil-container {
+            position: fixed;
+            top: 50%;
+            left: 47%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            border-radius: 20%;
+            overflow: hidden;
+        }
+        .soleil {
+            width: 26vw;
+            height: 26vw;
             background-image: url("Assets/soleil.png");
-            top: 20px;
-            left:;
-            right:0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+            border-radius: 100%;
+            transition: transform 0.3s ease;
+            pointer-events: auto;
+        }
+        .soleil:hover {
+            transform: scale(1.05);
         }
         .card{
             position: fixed;
@@ -35,17 +54,386 @@
             border: 1px solid rgba(255,255,255,0.04);
             z-index: 10;
         }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 200;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .modal-content {
+            background-color: rgba(20, 30, 50, 0.95);
+            margin: 5% auto;
+            padding: 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            width: 80%;
+            max-width: 600px;
+            color: #d8e3f0;
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .modal-header h2 {
+            margin: 0;
+            color: #ffd700;
+        }
+        .close-btn {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d8e3f0;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .close-btn:hover {
+            color: #fff;
+            transform: scale(1.2);
+        }
+        .modal-content p {
+            line-height: 1.6;
+            margin: 1rem 0;
+        }
+        .mars-container {
+            position: fixed;
+            top: 52%;
+            right: 72%;
+            transform: translate(50%, -50%);
+            z-index: 5;
+            border-radius: 20%;
+            overflow: hidden;
+        }
+        .mars {
+            width: 7vw;
+            height: 7vw;
+            background-image: url("Assets/mars.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            pointer-events: auto;
+        }
+        .mars:hover {
+            transform: scale(1.05);
+        }
+
+         .mars-container {
+            position: fixed;
+            top: 52%;
+            right: 72%;
+            transform: translate(50%, -50%);
+            z-index: 5;
+            border-radius: 20%;
+            overflow: hidden;
+        }
+        .terre {
+            width: 10vw;
+            height: 10vw;
+            background-image: url("Assets/terre.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            pointer-events: auto;
+        }
+        .terre:hover {
+            transform: scale(1.05);
+        }
+         .terre-container {
+            position: fixed;
+            top: 52%;
+            right: 78%;
+            transform: translate(50%, -50%);
+            z-index: 5;
+            border-radius: 20%;
+            overflow: hidden;
+        }
+        @keyframes marsClick {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+        .mars.clicked {
+            animation: marsClick 0.6s ease-out;
+        }
+        .explanation-card {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 85%;
+            max-width: 700px;
+            background: rgba(20, 30, 50, 0.95);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            z-index: 8;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.5s ease;
+        }
+        @keyframes slideUp {
+            from { transform: translateX(-50%) translateY(20px); opacity: 0; }
+            to { transform: translateX(-50%) translateY(0); opacity: 1; }
+        }
+        .explanation-card h3 {
+            margin-top: 0;
+            color: #ffd700;
+            font-size: 1.8rem;
+        }
+        .explanation-card p {
+            line-height: 1.8;
+            color: #d8e3f0;
+            margin: 1rem 0;
+        }
+        .solarsys-topbar {
+            background-color: rgba(6, 10, 29, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .solarsys-topbar .nav-toggle {
+            display: none;
+        }
     </style>
 <body>
-    <div class="card">
-        <h1>Système solaire</h1>
-        <p>Bienvenue sur la page <strong>Système solaire</strong>.</p> 
-        <p>Ici, tu pourras en apprendre plus sur le système solaire. Clique sur les planètes pour découvrir davantage d'informations !.</p>
-        <p>Contenu provisoire — remplace par ton composant ou intégration d'API quand tu seras prêt.</p>
-        <p><a href="astral.html" style="color:#fafafa">🏠 Retour à l'accueil</a></p>
+    <header class="topbar solarsys-topbar">
+        <div class="brand">
+            <img src="logoastral.png" alt="Astral" class="brand-logo" width="160" height="72">
+        </div>
+        <nav class="topnav" aria-label="Navigation principale">
+            <a href="astral.html">Accueil</a>
+            <a href="iss.html">ISS</a>
+            <a href="daily-astre.html">Daily Astre</a>
+            <a href="SpaceX.html">SpaceX</a>
+            <a href="Meteos.html">Meteos</a>
+        </nav>
+    </header>
+
+    <div class="explanation-card">
+        <h3>🌍 Système Solaire</h3>
+        <p>Bienvenue sur la page du Système Solaire ! Ici, tu découvriras les merveilles de notre système planétaire. Le Système Solaire est composé du Soleil, de huit planètes, de leurs lunes, d'astéroïdes et de comètes.</p>
+        <p><strong>Clique sur les astres</strong> (le Soleil, Mars, etc.) pour en apprendre davantage sur leurs caractéristiques, leur composition et leur rôle dans l'univers.</p>
+        <p style="font-style: italic; margin-top: 1.5rem;">Explore, apprends et laisse-toi fasciner par les mystères de l'espace ! 🚀</p>
     </div>
-    <system class="soleil">
-        <h1>Test</h1>
-    </system>
+
+    <div class="soleil-container">
+        <div class="soleil" id="soleilBtn" title="Cliquez pour en savoir plus sur le Soleil"></div>
+    </div>
+
+    <div class="mars-container">
+        <div class="mars" id="marsBtn" title="Cliquez pour en savoir plus sur Mars"></div>
+    </div>
+
+    <div class="terre-container">
+        <div class="terre" id="terreBtn" title="Cliquez pour en savoir plus sur Terre"></div>
+    </div>
+
+    <section id="nav-panel" class="navigation" aria-hidden="true">
+        <ul>
+            <li><a href="astral.html">🏠 Accueil</a></li>
+            <li><a href="solarsys.html">Système solaire</a></li>
+            <li><a href="iss.html">ISS</a></li>
+            <li><a href="daily-astre.html">Daily Astre</a></li>
+            <li><a href="SpaceX.html">SpaceX</a></li>
+            <li><a href="Meteos.html">Meteos</a></li>
+            <li><button id="logout" class="hamburger-logout">Déconnecter</button></li>
+        </ul>
+    </section>
+
+        <div id="terreModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>🌍 La Terre</h2>
+            <button class="close-btn" id="closeTerreModal">&times;</button>
+        </div>
+
+        <p><strong>La Terre</strong> est la troisième planète du système solaire et la seule connue pour abriter la vie. Elle possède une atmosphère protectrice, une eau liquide abondante et une température idéale.</p>
+
+        <p><strong>Caractéristiques principales :</strong></p>
+        <ul>
+            <li><strong>Diamètre :</strong> 12 742 km</li>
+            <li><strong>Distance au Soleil :</strong> 150 millions de km (1 UA)</li>
+            <li><strong>Température moyenne :</strong> 15°C</li>
+            <li><strong>Lune :</strong> 1 — *La Lune*</li>
+            <li><strong>Jour terrestre :</strong> 24 heures</li>
+        </ul>
+
+        <p><strong>Atmosphère :</strong> Composée principalement d’azote (78%) et d’oxygène (21%). Elle protège la vie contre les radiations solaires et les météorites.</p>
+
+        <p><strong>Particularité :</strong> 71% de la surface est recouverte d’océans, faisant de la Terre une planète bleue.</p>
+
+        <p><strong>La Terre et la vie :</strong> Elle est le foyer d’une biodiversité immense, unique dans le système solaire.</p>
+    </div>
+</div>
+
+    <div id="marsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🔴 Mars</h2>
+                <button class="close-btn" id="closeMarsModal">&times;</button>
+            </div>
+            <p><strong>Mars</strong> est la quatrième planète du système solaire. C'est une planète rocheuse connue pour sa couleur rouge distinctive due à l'oxyde de fer (rouille) sur sa surface.</p>
+            
+            <p><strong>Caractéristiques principales :</strong></p>
+            <ul>
+                <li><strong>Diamètre :</strong> Environ 6 779 km (un peu plus de la moitié de la Terre)</li>
+                <li><strong>Distance du Soleil :</strong> Environ 228 millions de km</li>
+                <li><strong>Température :</strong> Entre -140°C et 20°C en surface</li>
+                <li><strong>Lunes :</strong> 2 lunes : Phobos et Déimos</li>
+                <li><strong>Jour martien :</strong> 24h 37 minutes (similaire à la Terre)</li>
+            </ul>
+
+            <p><strong>Atmosphère :</strong> Mars possède une atmosphère fine composée principalement de dioxyde de carbone. La pression atmosphérique est seulement 0,6% de celle de la Terre.</p>
+
+            <p><strong>Eau et vie :</strong> Des preuves scientifiques suggèrent la présence d'eau gelée sous la surface. Mars a été un foyer majeur de la recherche de vie extraterrestre passée.</p>
+
+            <p><strong>Exploration :</strong> Mars est la deuxième planète la plus visitée par les rovers et sondes spatiales. Elle fascine les scientifiques car elle pourrait avoir accueilli la vie autrefois.</p>
+        </div>
+    </div>
+
+    <div id="soleilModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>☀️ Le Soleil</h2>
+                <button class="close-btn" id="closeSoleilModal">&times;</button>
+            </div>
+            <p><strong>Le Soleil</strong> est l'étoile centrale du système solaire. C'est une boule de gaz chaud composée principalement d'hydrogène et d'hélium.</p>
+            
+            <p><strong>Caractéristiques principales :</strong></p>
+            <ul>
+                <li><strong>Diamètre :</strong> Environ 1,39 million de km (109 fois plus grand que la Terre)</li>
+                <li><strong>Masse :</strong> 99,86% de la masse du système solaire</li>
+                <li><strong>Température :</strong> 5 500 °C en surface, 15 millions °C au centre</li>
+                <li><strong>Âge :</strong> Environ 4,6 milliards d'années</li>
+            </ul>
+
+            <p><strong>Son rôle :</strong> Le Soleil est responsable de pratiquement toute l'énergie dans le système solaire. Il maintient les planètes en orbite par sa gravité et fournit la chaleur et la lumière essentielles à la vie sur Terre.</p>
+
+            <p><strong>Composition :</strong> Le Soleil est constitué de plasma, un état de la matière où les électrons sont séparés des noyaux atomiques. Son énergie provient de la fusion nucléaire, où l'hydrogène se transforme en hélium.</p>
+
+            <p><strong>Durée de vie :</strong> Le Soleil devrait continuer à briller pendant environ 10 milliards d'années. Il est actuellement à mi-parcours de sa vie.</p>
+        </div>
+    </div>
+
+    <script>
+        console.log('Script chargé');
+        
+        const navToggle = document.querySelector('.nav-toggle');
+        const navPanel = document.getElementById('nav-panel');
+
+        if (navToggle && navPanel) {
+            navToggle.addEventListener('click', function() {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                navPanel.setAttribute('aria-hidden', isExpanded);
+            });
+        }
+        
+        const soleilBtn = document.getElementById('soleilBtn');
+        const soleilModal = document.getElementById('soleilModal');
+        const closeSoleilModal = document.getElementById('closeSoleilModal');
+
+        console.log('soleilBtn:', soleilBtn);
+        console.log('soleilModal:', soleilModal);
+
+        if (soleilBtn && soleilModal) {
+            soleilBtn.addEventListener('click', function(e) {
+                console.log('Clic sur Soleil!');
+                e.preventDefault();
+                e.stopPropagation();
+                soleilModal.style.display = 'block';
+            });
+        }
+
+        const marsBtn = document.getElementById('marsBtn');
+        const marsModal = document.getElementById('marsModal');
+        const closeMarsModal = document.getElementById('closeMarsModal');
+
+        console.log('marsBtn:', marsBtn);
+        console.log('marsModal:', marsModal);
+
+        if (marsBtn && marsModal) {
+            marsBtn.addEventListener('click', function(e) {
+                console.log('Clic sur Mars!');
+                e.preventDefault();
+                e.stopPropagation();
+                marsModal.style.display = 'block';
+            });
+        }
+
+        if (closeSoleilModal) {
+            closeSoleilModal.addEventListener('click', function() {
+                soleilModal.style.display = 'none';
+            });
+        }
+
+        if (closeMarsModal) {
+            closeMarsModal.addEventListener('click', function() {
+                marsModal.style.display = 'none';
+            });
+        }
+
+        const terreBtn = document.getElementById('terreBtn');
+        const terreModal = document.getElementById('terreModal');
+        const closeTerreModal = document.getElementById('closeTerreModal');
+
+        console.log('terreBtn:', terreBtn);
+        console.log('terreModal:', terreModal);
+
+        if (terreBtn && terreModal) {
+            terreBtn.addEventListener('click', function(e) {
+                console.log('Clic sur Terre!');
+                e.preventDefault();
+                e.stopPropagation();
+                terreModal.style.display = 'block';
+            });
+        }
+
+        if (closeTerreModal) {
+            closeTerreModal.addEventListener('click', function() {
+                terreModal.style.display = 'none';
+            });
+        }
+
+        window.addEventListener('click', function(event) {
+            if (event.target === terreModal && terreModal) {
+                terreModal.style.display = 'none';
+            }
+        });
+
+
+        window.addEventListener('click', function(event) {
+            if (event.target === soleilModal && soleilModal) {
+                soleilModal.style.display = 'none';
+            }
+            if (event.target === marsModal && marsModal) {
+                marsModal.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
