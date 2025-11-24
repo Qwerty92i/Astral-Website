@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Sandwich
     var btn = document.querySelector('.nav-toggle');
     var panel = document.getElementById('nav-panel');
     if (btn && panel) {
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setState(false); });
     }
 
-    // Carte
     var cards = Array.prototype.slice.call(document.querySelectorAll('.presentation-card'));
     if (cards.length) {
         cards.forEach(function (card) {
@@ -51,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Login
      logoutBtn = document.getElementById('logout');
      userEl = document.getElementById('user');
     if (logoutBtn) {

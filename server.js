@@ -7,16 +7,13 @@ import crypto from 'crypto';
 
 const PORT = 3000;
 
-// Path to users file - using the GitHub network path
 const usersFilePath = '\\\\srv-dc\\mcubier$\\Documents\\GitHub\\Astral-Website\\users.json';
 
-// Initialize users file if it doesn't exist
 if (!fs.existsSync(usersFilePath)) {
     fs.writeFileSync(usersFilePath, JSON.stringify([], null, 2));
     console.log('✅ Fichier users.json créé sur le serveur réseau');
 }
 
-// Helper functions for password hashing
 function hashPassword(password) {
     return crypto.createHash('sha256').update(password).digest('hex');
 }
@@ -25,18 +22,15 @@ function verifyPassword(password, hash) {
     return hashPassword(password) === hash;
 }
 
-// Read users
 function readUsers() {
     const data = fs.readFileSync(usersFilePath, 'utf-8');
     return JSON.parse(data);
 }
 
-// Write users
 function writeUsers(users) {
     fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
 }
 
-// Helper to parse JSON body
 async function parseJSON(req) {
     return new Promise((resolve, reject) => {
         let body = '';
@@ -51,15 +45,12 @@ async function parseJSON(req) {
     });
 }
 
-// Create HTTP server
 const server = http.createServer(async (req, res) => {
-    // CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.setHeader('Content-Type', 'application/json');
 
-    // Handle CORS preflight
     if (req.method === 'OPTIONS') {
         res.writeHead(200);
         res.end();
@@ -70,14 +61,12 @@ const server = http.createServer(async (req, res) => {
     const pathname = parsedUrl.pathname;
 
     try {
-        // Health check
         if (pathname === '/api/health' && req.method === 'GET') {
             res.writeHead(200);
             res.end(JSON.stringify({ status: 'ok', message: '🚀 Serveur actif' }));
             return;
         }
 
-        // Register
         if (pathname === '/api/register' && req.method === 'POST') {
             const body = await parseJSON(req);
             const { email, password } = body;
@@ -88,7 +77,6 @@ const server = http.createServer(async (req, res) => {
                 return;
             }
 
-            // Validate email format
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 res.writeHead(400);
@@ -98,17 +86,14 @@ const server = http.createServer(async (req, res) => {
 
             const users = readUsers();
 
-            // Check if user already exists
             if (users.some(user => user.email === email)) {
                 res.writeHead(400);
                 res.end(JSON.stringify({ message: 'Cet email est déjà utilisé.' }));
                 return;
             }
 
-            // Hash the password
             const hashedPassword = hashPassword(password);
 
-            // Add new user
             const newUser = {
                 id: Date.now(),
                 email,
@@ -124,7 +109,6 @@ const server = http.createServer(async (req, res) => {
             return;
         }
 
-        // Login
         if (pathname === '/api/login' && req.method === 'POST') {
             const body = await parseJSON(req);
             const { email, password } = body;
@@ -137,7 +121,6 @@ const server = http.createServer(async (req, res) => {
 
             const users = readUsers();
 
-            // Find user by email
             const user = users.find(u => u.email === email);
 
             if (!user) {
@@ -146,7 +129,6 @@ const server = http.createServer(async (req, res) => {
                 return;
             }
 
-            // Compare passwords
             const isPasswordValid = verifyPassword(password, user.password);
 
             if (!isPasswordValid) {
@@ -160,7 +142,6 @@ const server = http.createServer(async (req, res) => {
             return;
         }
 
-        // Get all users
         if (pathname === '/api/users' && req.method === 'GET') {
             const users = readUsers();
             const userList = users.map(u => ({ email: u.email, id: u.id, created_at: u.created_at }));
@@ -169,7 +150,6 @@ const server = http.createServer(async (req, res) => {
             return;
         }
 
-        // 404
         res.writeHead(404);
         res.end(JSON.stringify({ message: 'Route non trouvée' }));
 
@@ -180,7 +160,6 @@ const server = http.createServer(async (req, res) => {
     }
 });
 
-// Start server
 server.listen(PORT, () => {
     console.log(`🚀 Serveur lancé sur http://localhost:${PORT}`);
     console.log(`📁 Fichier des utilisateurs: ${usersFilePath}`);
