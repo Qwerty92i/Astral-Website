@@ -1,0 +1,212 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0; 
+    min-height: 100vh;
+    background-image: url("../Assets/solarsysimg.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    color: #e6eef8;
+}
+.soleil-container {
+    position: fixed;
+    top: 50%;
+    left: 47%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    border-radius: 20%;
+    overflow: hidden;
+}
+.soleil {
+    width: 26vw;
+    height: 26vw;
+    background-image: url("../Assets/soleil.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    border-radius: 100%;
+    transition: transform 0.3s ease;
+    pointer-events: auto;
+}
+.soleil:hover {
+    transform: scale(1.05);
+}
+.card{
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    max-width: calc(100% - 2rem);
+    background: rgba(250,255,255,0.03);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.04);
+    z-index: 10;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.modal-content {
+    background-color: rgba(20, 30, 50, 0.95);
+    margin: 5% auto;
+    padding: 2rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    width: 80%;
+    max-width: 600px;
+    color: #d8e3f0;
+    animation: slideIn 0.3s ease;
+}
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.modal-header h2 {
+    margin: 0;
+    color: #ffd700;
+}
+.close-btn {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #d8e3f0;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.close-btn:hover {
+    color: #fff;
+    transform: scale(1.2);
+}
+.modal-content p {
+    line-height: 1.6;
+    margin: 1rem 0;
+}
+.mars-container {
+    position: fixed;
+    top: 52%;
+    right: 72%;
+    transform: translate(50%, -50%);
+    z-index: 5;
+    border-radius: 20%;
+    overflow: hidden;
+}
+.mars {
+    width: 7vw;
+    height: 7vw;
+    background-image: url("../Assets/mars.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    pointer-events: auto;
+}
+.mars:hover {
+    transform: scale(1.05);
+}
+
+ .mars-container {
+    position: fixed;
+    top: 52%;
+    right: 72%;
+    transform: translate(50%, -50%);
+    z-index: 5;
+    border-radius: 20%;
+    overflow: hidden;
+}
+.terre {
+    width: 10vw;
+    height: 10vw;
+    background-image: url("../Assets/terre.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    pointer-events: auto;
+}
+.terre:hover {
+    transform: scale(1.05);
+}
+ .terre-container {
+    position: fixed;
+    top: 52%;
+    right: 78%;
+    transform: translate(50%, -50%);
+    z-index: 5;
+    border-radius: 20%;
+    overflow: hidden;
+}
+@keyframes marsClick {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+.mars.clicked {
+    animation: marsClick 0.6s ease-out;
+}
+.explanation-card {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    max-width: 700px;
+    background: rgba(20, 30, 50, 0.95);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    z-index: 8;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.5s ease;
+}
+@keyframes slideUp {
+    from { transform: translateX(-50%) translateY(20px); opacity: 0; }
+    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+.explanation-card h3 {
+    margin-top: 0;
+    color: #ffd700;
+    font-size: 1.8rem;
+}
+.explanation-card p {
+    line-height: 1.8;
+    color: #d8e3f0;
+    margin: 1rem 0;
+}
+.solarsys-topbar {
+    background-color: rgba(6, 10, 29, 0.95);
+    backdrop-filter: blur(10px);
+}
+.solarsys-topbar .nav-toggle {
+    display: none;
+}

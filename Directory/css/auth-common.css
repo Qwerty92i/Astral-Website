@@ -1,0 +1,19 @@
+.auth-toggle {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.auth-toggle p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.auth-toggle a {
+    color: #eb7371;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-toggle a:hover {
+    text-decoration: underline;
+}

@@ -2,7 +2,7 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     margin: 0; 
     min-height: 100vh;
-    background-image: url("Assets/meteos.jpg");
+    background-image: url("../Assets/meteos.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: repeat;
@@ -36,7 +36,7 @@ body{
     display:flex;
     gap:95px;
     align-items:center;
-    margin-left:30rem;
+    margin-left:20rem;
 }
 
 .topnav a{

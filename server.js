@@ -7,7 +7,9 @@ import crypto from 'crypto';
 
 const PORT = 3000;
 
-const usersFilePath = '\\\\srv-dc\\mcubier$\\Documents\\GitHub\\Astral-Website\\users.json';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const usersFilePath = path.join(__dirname, 'users.json');
 
 if (!fs.existsSync(usersFilePath)) {
     fs.writeFileSync(usersFilePath, JSON.stringify([], null, 2));

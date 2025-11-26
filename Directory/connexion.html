@@ -4,26 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion - Astral</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
-    <style>
-        .auth-toggle {
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-        .auth-toggle p {
-            font-size: 14px;
-            margin: 0;
-        }
-        .auth-toggle a {
-            color: #eb7371;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .auth-toggle a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="css/auth-common.css">
 </head>
 <body>
     <form id="loginForm">
@@ -53,38 +36,6 @@
 
     <p id="error" style="color: #eb7371; text-align: center; margin-top: 1rem;"></p>
     
-    <script>
-        if (localStorage.getItem("isLoggedIn") === "true") {
-            window.location.href = "astral.html";
-        }
-
-        document.getElementById("loginForm").addEventListener("submit", async function(e) {
-            e.preventDefault();
-            const email = document.getElementById("loginEmail").value;
-            const password = document.getElementById("loginPassword").value;
-
-            document.getElementById("error").textContent = '';
-
-            try {
-                const response = await fetch('http://localhost:3000/api/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password })
-                });
-                const data = await response.json();
-
-                if (response.ok) {
-                    localStorage.setItem("isLoggedIn", "true");
-                    localStorage.setItem("username", email);
-                    window.location.href = "astral.html";
-                } else {
-                    document.getElementById("error").textContent = "✗ " + (data.message || "Identifiants incorrects.");
-                }
-            } catch (error) {
-                document.getElementById("error").textContent = "✗ Erreur serveur. Vérifiez que le serveur est lancé (npm start).";
-                console.error('Erreur:', error);
-            }
-        });
-    </script>
+    <script src="js/connexion.js"></script>
 </body>
 </html>

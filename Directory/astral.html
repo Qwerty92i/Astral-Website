@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Astral</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
      <header class="topbar">
@@ -28,36 +28,75 @@
     <main>
 
         <section class="presentation">
+            <button class="presentation-card card-website" aria-haspopup="dialog" data-modal="presentation-modal-website" aria-controls="presentation-modal-website">
+                <h2>À propos de ce site</h2>
+                <p class="teaser">Découvrez notre projet</p>
+            </button>
+
             <button class="presentation-card card-1" aria-haspopup="dialog" data-modal="presentation-modal-1" aria-controls="presentation-modal-1">
-                <h2>Premier astronaute</h2>
-                <p class="teaser">Cliquez pour en savoir plus</p>
+                <h2>Youri Gagarine - Premier astronaute</h2>
+                <p class="teaser">Le 12 avril 1961</p>
             </button>
 
             <button class="presentation-card card-2" aria-haspopup="dialog" data-modal="presentation-modal-2" aria-controls="presentation-modal-2">
-                <h2>Premier homme a avoir marché sur la Lune</h2>
-                <p class="teaser">Clique pour en savoir plus</p>
+                <h2>Valentina Tereshkova - Première femme dans l'espace</h2>
+                <p class="teaser">Pionnière soviétique</p>
             </button>
 
             <button class="presentation-card card-3" aria-haspopup="dialog" data-modal="presentation-modal-3" aria-controls="presentation-modal-3">
-                <h2>La premiere fusée dans le monde</h2>
-                <p class="teaser">Clique pour en savoir plus</p>
+                <h2>Neil Armstrong - Premier pas sur la Lune</h2>
+                <p class="teaser">20 juillet 1969</p>
             </button>
 
             <button class="presentation-card card-4" aria-haspopup="dialog" data-modal="presentation-modal-4" aria-controls="presentation-modal-4">
-                <h2>La fusée la plus puissante du monde</h2>
-                <p class="teaser">Clique pour en savoir plus</p>
+                <h2>Spoutnik 1 - Premier satellite artificiel</h2>
+                <p class="teaser">4 octobre 1957</p>
             </button>
            
-            <button class="presentation-card card-5" aria-haspopup="dialog" data-modal="presentation-modal-4" aria-controls="presentation-modal-4">
-                <h2>Les technologies utilisées et dans quelles conditions</h2>
-                <p class="teaser">Clique pour en savoir plus</p>
+            <button class="presentation-card card-5" aria-haspopup="dialog" data-modal="presentation-modal-5" aria-controls="presentation-modal-5">
+                <h2>Le Programme Apollo - Conquête lunaire</h2>
+                <p class="teaser">12 astronautes sur la Lune</p>
             </button>
+
+            <button class="presentation-card card-6" aria-haspopup="dialog" data-modal="presentation-modal-6" aria-controls="presentation-modal-6">
+                <h2>Les grands jalons spatiaux</h2>
+                <p class="teaser">Histoire de l'exploration</p>
+            </button>
+
+            <button class="presentation-card card-quiz" onclick="window.location.href='quizGeneral.html'">
+                <h2>Testez vos connaissances</h2>
+                <p class="teaser">Quiz Général 🚀</p>
+            </button>
+
+            <div id="presentation-modal-website" class="modal" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+                <div class="modal-content" role="document">
+                    <button class="modal-close" aria-label="Fermer la présentation">✕</button>
+                    <div class="modal-body">
+                        <h4><strong>Bienvenue sur Astral - Votre Explorateur du Cosmos ! 🌌</strong></h4>
+                        <p>Astral est un site éducatif conçu pour vous offrir une exploration complète de l'univers et de l'espace. Nous avons rassemblé les données les plus fascinantes et les plus à jour sur les mystères du cosmos.</p>
+                        <p><strong>Ce que vous découvrirez :</strong></p>
+                        <ul style="text-align: left; margin: 10px 0;">
+                            <li><strong>Système Solaire :</strong> Explorez les merveilles de nos 8 planètes avec des détails complets et interactifs</li>
+                            <li><strong>ISS (Station Spatiale Internationale) :</strong> Consultez sa position en temps réel, sa date de création, et le nombre d'astronautes à bord actuellement</li>
+                            <li><strong>SpaceX :</strong> Suivez les lancements de fusées, les atterrissages et les détails de chaque mission SpaceX</li>
+                            <li><strong>Daily Astre :</strong> Découvrez chaque jour une nouvelle photographie de l'univers directement de la NASA</li>
+                            <li><strong>Météorologie de Mars :</strong> Consultez les conditions atmosphériques en temps réel sur la Planète Rouge</li>
+                            <li><strong>Astéroïdes & Météores :</strong> Apprenez-en plus sur les objets célestes qui traversent notre système solaire</li>
+                            <li><strong>Quiz Spatiaux :</strong> Testez vos connaissances avec nos quiz interactifs et relevez le défi!</li>
+                        </ul>
+                        <p>Grâce à nos APIs intégrées (NASA, SpaceX, Open Notify), toutes les données sont mises à jour en temps réel. Connectez-vous pour accéder à plus de contenu et rejoignez notre communauté de passionnés de l'espace ! 🚀</p>
+                    </div>
+                </div>
+            </div>
 
             <div id="presentation-modal-1" class="modal" role="dialog" aria-modal="true" aria-hidden="true" hidden>
                 <div class="modal-content" role="document">
                     <button class="modal-close" aria-label="Fermer la présentation">✕</button>
                     <div class="modal-body">
-                        <h4>Youri Alexeïevitch Gagarine est le premier homme à avoir voyagé dans l’espace. Le 12 avril 1961, il a effectué le tout premier vol spatial habité à bord du vaisseau Vostok 1.</4>
+                        <h4><strong>Youri Alexeïevitch Gagarine - Premier Astronaute de l'Histoire</strong></h4>
+                        <p>Le 12 avril 1961, Youri Gagarine devient le premier homme à voyager dans l'espace à bord du vaisseau Vostok 1. Cette mission historique, lancée par l'Union Soviétique sous la direction de l'ingénieur Sergueï Korolev, dure 1 heure et 48 minutes et permet à Gagarine de réaliser une orbite complète autour de la Terre.</p>
+                        <p>Son voyage orbital révolutionne notre compréhension du cosmos et ouvre officiellement l'ère de l'exploration spatiale habitée. Gagarine devient une légende mondiale et reste à jamais le pionnier de l'humanité dans l'espace. Sa phrase célèbre : "Je ne vois pas Dieu ici" symbolise la laïcité de la conquête spatiale soviétique.</p>
+                        <p>Cet exploit marque un tournant majeur dans l'histoire de l'humanité et inspire les générations futures d'astronautes et de cosmonautes. 🌟</p>
                     </div>
                 </div>
             </div>
@@ -65,7 +104,10 @@
                 <div class="modal-content" role="document">
                     <button class="modal-close" aria-label="Fermer la présentation">✕</button>
                     <div class="modal-body">
-                        <h4>Le 20 juillet 1969, Neil Armstrong est devenu le premier homme à marcher sur la Lune lors de la mission Apollo 11. Ce moment historique est aujourd’hui célébré sous le nom de #Moonday.</h4>
+                        <h4><strong>Valentina Tereshkova - Première Femme dans l'Espace</strong></h4>
+                        <p>Le 16 juin 1963, Valentina Tereshkova fait l'histoire en devenant la première femme à voyager dans l'espace à bord de Vostok 6. À seulement 26 ans, cette cosmonaute soviétique complète 48 orbites autour de la Terre en 3 jours, dépassant même les records de durée établis par les missions précédentes.</p>
+                        <p>Son vol n'est pas juste un succès technique, c'est une déclaration puissante : les femmes sont tout aussi capables que les hommes pour l'exploration spatiale. Valentina a préalablement travaillé comme parachutiste, ce qui l'a préparée physiquement et mentalement pour cette aventure extraordinaire.</p>
+                        <p>Tereshkova ouvre la voie aux femmes astronautes du monde entier et inspire des décennies de scientifiques et d'exploratrices. Son legacy perdure et elle reste un symbole de courage, de persévérance et de progrès. Elle est décorée de l'Ordre de Lénine et devient une héroïne nationale de l'Union Soviétique. 👩‍🚀</p>
                     </div>
                 </div>
             </div>
@@ -74,7 +116,10 @@
                 <div class="modal-content" role="document">
                     <button class="modal-close" aria-label="Fermer la présentation">✕</button>
                     <div class="modal-body">
-                        <h4>Le 4 octobre 1957, les Soviétiques, dirigés par l’ingénieur Sergueï Korolev, prennent la tête de la course à l’espace : la fusée Semiorka place sur orbite le premier satellite artificiel de l’histoire, Spoutnik 1.</h4>
+                        <h4><strong>Neil Armstrong - Un Petit Pas pour l'Homme, un Grand Pas pour l'Humanité</strong></h4>
+                        <p>Le 20 juillet 1969, Neil Armstrong devient le premier homme à marcher sur la Lune lors de la mission Apollo 11. Cette conquête légendaire, fruit de la coopération scientifique américaine dirigée par la NASA, est observée par environ 600 millions de personnes à travers le monde.</p>
+                        <p>Avant Armstrong, le module lunaire Eagle se pose dans la région de la Mer de la Tranquillité. Armstrong communique au contrôle de mission ces mots immortels : "C'est un petit pas pour l'homme, un grand pas pour l'humanité." Cette phrase, prononcée en descendant l'échelle du module, reste à jamais gravée dans nos mémoires.</p>
+                        <p>Armstrong parcourt 109 mètres sur la surface lunaire et collecte 21.5 kg de roches lunaires. Quelques minutes plus tard, Buzz Aldrin le rejoint. Leur présence sur la Lune prouve que l'humanité peut repousser les limites de l'impossible. Ce moment historique symbolise le triomphe de la science, de l'innovation et de la détermination humaine. 🌙</p>
                     </div>
                 </div>
             </div>
@@ -82,7 +127,10 @@
                 <div class="modal-content" role="document">
                     <button class="modal-close" aria-label="Fermer la présentation">✕</button>
                     <div class="modal-body">
-                        <h4>Le Starship, la fusée lunaire développée par SpaceX, bat tous les records. Ce géant métallique mesure près de 120 mètres de haut et pèse plus de 5 000 tonnes au décollage. Son premier étage, le Super Heavy, est équipé de 33 moteurs Raptor capables de placer jusqu’à 150 tonnes de charge utile en orbite basse. Conçu pour être entièrement réutilisable, le Starship représente une étape majeure dans la conquête spatiale moderne.</h4>
+                        <h4><strong>Spoutnik 1 - Le Premier Satellite Artificiel</strong></h4>
+                        <p>Le 4 octobre 1957, l'Union Soviétique lance Spoutnik 1, le premier satellite artificiel à atteindre l'orbite terrestre. Cet exploit, dirigé par l'ingénieur Sergueï Korolev, marque officiellement le début de l'ère spatiale et de la "Course à l'Espace" entre les superpuissances.</p>
+                        <p>Spoutnik 1 est une sphère de 58 cm de diamètre, pesant 83.6 kg, équipée de quatre antennes externes mesurant jusqu'à 2.9 mètres. Lancé à bord de la fusée R-7 (Semiorka), le satellite complète une orbite autour de la Terre en 96 minutes et transmet des signaux radio simples mais révolutionnaires.</p>
+                        <p>Depuis l'espace, Spoutnik envoie les signaux "bip-bip" qui sont reçus par des radioamateurs du monde entier. Ces signaux prouvent que l'humanité a réussi à placer un objet en orbite et ouvrent la voie à l'exploration spatiale moderne. Bien que petit et simple, Spoutnik 1 représente un génie technique et inspire l'humanité à viser plus haut. 📡</p>
                     </div>
                 </div>
             </div>
@@ -90,7 +138,23 @@
                 <div class="modal-content" role="document">
                     <button class="modal-close" aria-label="Fermer la présentation">✕</button>
                     <div class="modal-body">
-                        <h4>L’apesanteur, les températures extrêmes, les radiations cosmiques, le vide spatial et les forces de lancement sont des contraintes majeures à prendre en compte pour les missions spatiales.</h4>
+                        <h4><strong>Le Programme Apollo - La Conquête de la Lune</strong></h4>
+                        <p>Lancé par la NASA en 1961 sous la direction du Président John F. Kennedy, le programme Apollo représente l'une des plus grandes réalisations technologiques de l'histoire humaine. Son objectif ambitieux : envoyer des hommes sur la Lune et les ramener en toute sécurité.</p>
+                        <p>Entre 1969 et 1972, 6 missions Apollo ont atterri avec succès sur la surface lunaire. Au total, 12 astronautes américains différents ont marché sur la Lune, dont Neil Armstrong, Buzz Aldrin, Pete Conrad, Alan Bean, David Scott, James Irwin, John Young, Charles Duke, Eugene Cernan, Harrison Schmitt, Ron Evans et Alan Shepard.</p>
+                        <p>Ces explorations historiques ont collecté 382 kg de roches et d'échantillons lunaires, réalisé 60 heures de marche sur la Lune, et rapporté des données scientifiques invaluables. Le programme Apollo a mobilisé plus de 400 000 personnes et a coûté 280 milliards de dollars (en 2023). Son succès prouve que l'humanité peut accomplir des rêves extraordinaires par la science et la persévérance. 🚀🌙</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="presentation-modal-6" class="modal" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+                <div class="modal-content" role="document">
+                    <button class="modal-close" aria-label="Fermer la présentation">✕</button>
+                    <div class="modal-body">
+                        <h4><strong>L'Exploration Spatiale - D'hier à Demain</strong></h4>
+                        <p>L'histoire de l'exploration spatiale est l'une des plus remarquables épopées de l'humanité. Du premier vol de Gagarine en 1961 jusqu'à nos jours, nous avons parcouru un chemin extraordinaire vers les étoiles.</p>
+                        <p><strong>Les Grandes Étapes :</strong> Après Gagarine et Tereshkova, le programme Mercury prépare les astronautes américains au vol spatial. Le programme Gemini permet d'expérimenter le rendez-vous orbital et les sorties dans l'espace. Apollo culmine avec la marche sur la Lune en 1969. Puis viennent les stations spatiales Skylab et Mir, révolutionnant notre compréhension de la vie en microgravité.</p>
+                        <p><strong>L'Ère Moderne :</strong> Aujourd'hui, l'exploration spatiale continue de progresser rapidement grâce à une nouvelle vague d'innovation. La Station Spatiale Internationale (ISS), en orbite depuis 1998, accueille régulièrement des équipages internationaux et réunit 15 pays. SpaceX révolutionne l'industrie avec ses fusées réutilisables Falcon 9 et Falcon Heavy, ainsi que son ambitieux vaisseau Starship destiné à Mars.</p>
+                        <p><strong>L'Avenir :</strong> Les plans incluent un retour sur la Lune avec la mission Artemis, l'établissement d'une base lunaire permanente, et finalement une mission habitée vers Mars. Avec des entreprises privées comme SpaceX, Blue Origin et Virgin Galactic, l'espace devient de plus en plus accessible. Le cosmos est notre destinée, et l'aventure ne fait que commencer ! 🌌✨</p>
                     </div>
                 </div>
             </div>
@@ -105,6 +169,6 @@
             </ul>
         </section>
     </main>
-    <script src="scripts.js" defer></script>
+    <script src="js/scripts.js" defer></script>
 </body>
 </html>

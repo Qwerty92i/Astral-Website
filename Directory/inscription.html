@@ -4,31 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S'inscrire - Astral</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
-    <style>
-        .auth-toggle {
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-        .auth-toggle p {
-            font-size: 14px;
-            margin: 0;
-        }
-        .auth-toggle a {
-            color: #eb7371;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .auth-toggle a:hover {
-            text-decoration: underline;
-        }
-        .success-message {
-            color: #4caf50;
-            text-align: center;
-            margin-top: 1rem;
-        }
-    </style>
+    <link rel="stylesheet" href="css/auth-common.css">
+    <link rel="stylesheet" href="css/inscription.css">
 </head>
 <body>
     <form id="registerForm">
@@ -55,53 +34,6 @@
     <p id="error" style="color: #eb7371; text-align: center; margin-top: 1rem;"></p>
     <p id="success" style="color: #4caf50; text-align: center; margin-top: 1rem;"></p>
     
-    <script>
-        if (localStorage.getItem("isLoggedIn") === "true") {
-            window.location.href = "astral.html";
-        }
-
-        document.getElementById("registerForm").addEventListener("submit", async function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById("registerEmail").value;
-            const password = document.getElementById("registerPassword").value;
-            const confirmPassword = document.getElementById("registerConfirmPassword").value;
-
-            document.getElementById("error").textContent = '';
-            document.getElementById("success").textContent = '';
-
-            if (password.length < 6) {
-                document.getElementById("error").textContent = "Le mot de passe doit contenir au moins 6 caractères.";
-                return;
-            }
-
-            if (password !== confirmPassword) {
-                document.getElementById("error").textContent = "Les mots de passe ne correspondent pas.";
-                return;
-            }
-
-            try {
-                const response = await fetch('http://localhost:3000/api/register', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password })
-                });
-                const data = await response.json();
-
-                if (response.ok) {
-                    document.getElementById("success").textContent = "✓ Compte créé avec succès! Redirection vers la connexion...";
-                    document.getElementById("registerForm").reset();
-                    setTimeout(() => {
-                        window.location.href = "connexion.html";
-                    }, 2000);
-                } else {
-                    document.getElementById("error").textContent = "✗ " + (data.message || "Erreur lors de l'inscription.");
-                }
-            } catch (error) {
-                document.getElementById("error").textContent = "✗ Erreur serveur. Vérifiez que le serveur est lancé (npm start).";
-                console.error('Erreur:', error);
-            }
-        });
-    </script>
+    <script src="js/inscription.js"></script>
 </body>
 </html>

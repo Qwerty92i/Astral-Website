@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Astre – Météores</title>
-    <link rel="stylesheet" href="meteos.css">
+    <link rel="stylesheet" href="css/meteos.css">
 </head>
 <body>
     <header class="topbar">
@@ -30,13 +30,18 @@
             <div id="neos">
                 <div class="neos-header">
                     <div class="neos-title">Astéroïdes proches de la Terre</div>
-                    <div class="neos-subtitle">Données en direct depuis l’API NEO de la NASA</div>
+                    <div class="neos-subtitle">Données en direct depuis l'API NEO de la NASA</div>
                 </div>
                 <p class="loading" id="neos-loading">Chargement des astéroïdes...</p>
                 <p class="error" id="neos-error" style="display:none;"></p>
                 <ul class="neo-list" id="neos-list"></ul>
+            </div>
+            
+            <div style="margin-top: 2rem; text-align: center;">
+                <a href="quizMeteos.html" style="display: inline-block; padding: 0.8rem 1.5rem; background-color: #a9d6ff; color: #000; text-decoration: none; border-radius: 6px; font-weight: bold; transition: background-color 0.3s;">📝 Faire le Quiz Météores</a>
+            </div>
         </div>
     </div>
-    <script src="meteos.js"></script>
+    <script src="js/meteos.js"></script>
 </body>
 </html>
