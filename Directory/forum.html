@@ -1,96 +1,67 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Forum de discussion</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Forum de discussion</title>
+  <link rel="stylesheet" href="css/forum.css">
 </head>
 <body>
-    <h1>Forum de discussion</h1>
+  <header class="topbar">
+    <div class="brand">
+      <img src="logoastral.png" alt="Astral" class="brand-logo" width="70" height="70">
+    </div>
+    <nav class="topnav" aria-label="Navigation principale">
+      <a href="astral.html">Accueil</a>
+      <a href="solarsys.html">Système solaire</a>
+      <a href="iss.html">ISS</a>
+      <a href="daily-astre.html">Daily Astre</a>
+      <a href="SpaceX.html">SpaceX</a>
+      <a href="forum.html">Forum</a>
+    </nav>
+  </header>
 
-    <div id="messages"></div>
+  <div id="server-status" style="position:fixed;left:18px;top:90px;background:rgba(0,0,0,0.6);color:#fff;padding:6px 10px;border-radius:6px;z-index:50;font-size:0.9rem">Serveur: inconnnu</div>
 
-    <form id="form">
-        <input type="text" id="author" placeholder="Votre nom" required>
-        <textarea id="content" placeholder="Votre message" required></textarea>
-        <button type="submit">Envoyer</button>
-    </form>
+    <div class="overlay">
+      <div class="card">
+        <main class="container forum-layout">
+            <aside class="threads-column">
+      <div class="threads-header">
+        <h2>Discussions</h2>
+        <button id="create-thread-btn">Créer une discussion</button>
+      </div>
+      <ul id="threads-list"></ul>
+    </aside>
 
-    <script>
-        async function loadMessages() {
-    const res = await fetch("/messages");
-    const messages = await res.json();
+    <section class="thread-panel">
+      <div id="thread-area">
+        <h1 id="thread-title">Sélectionnez une discussion</h1>
+        <div id="messages"></div>
 
-    const container = document.getElementById("messages");
-    container.innerHTML = "";
+        <form id="thread-form" style="display:none;">
+          <textarea id="thread-message" rows="4" placeholder="Votre message..." required></textarea>
+          <div class="actions">
+            <button type="submit">Envoyer</button>
+          </div>
+        </form>
+      </div>
+        </section>
+        </main>
+      </div>
+    </div>
 
-    messages.forEach(m => {
-        container.innerHTML += `
-            <div class="message">
-                <strong>${m.author}</strong> <em>${new Date(m.date).toLocaleString()}</em>
-                <p>${m.content}</p>
-            </div>
-        `;
-    });
-}
+  <div id="login-panel" class="login-panel">
+    <h3>Connexion / Inscription</h3>
+    <input id="auth-email" type="email" placeholder="email@exemple.com">
+    <input id="auth-pass" type="password" placeholder="mot de passe">
+    <div style="display:flex;gap:8px;margin-top:8px;">
+      <button id="btn-login">Se connecter</button>
+      <button id="btn-register">S'inscrire</button>
+    </div>
+    <p id="auth-status" style="margin-top:8px;color:#b91c1c;display:none;"></p>
+  </div>
 
-document.getElementById("form").addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const author = document.getElementById("author").value;
-    const content = document.getElementById("content").value;
-
-    await fetch("/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ author, content })
-    });
-
-    document.getElementById("content").value = "";
-    loadMessages();
-});
-
-loadMessages();
-    </script>
-    <style>
-        body {
-    font-family: Arial, sans-serif;
-    width: 700px;
-    margin: auto;
-    padding-top: 40px;
-}
-
-#messages {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 20px;
-}
-
-.message {
-    border-bottom: 1px solid #eee;
-    padding: 10px 0;
-}
-
-.message:last-child {
-    border-bottom: none;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-input, textarea {
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 16px;
-}
-
-button {
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-}
-    </style>
+  <script src="js/forum.js" defer></script>
 </body>
 </html>

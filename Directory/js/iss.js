@@ -1,14 +1,10 @@
+const map = L.map('iss-map').setView([0, 0], 2);
 
-    // Initialisation de la carte centrée sur (0,0) au début
-    const map = L.map('iss-map').setView([0, 0], 2);
-
-    // Fond de carte (tu peux en changer si tu veux)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 8,
         attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // Marqueur pour l’ISS (position initiale fictive)
     const issIcon = L.icon({
         iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d0/International_Space_Station.svg',
         iconSize: [40, 40], 
@@ -16,7 +12,6 @@
 
     const issMarker = L.marker([0, 0], { icon: issIcon }).addTo(map);
 
-    // Fonction pour récupérer et mettre à jour la position
     function updateISS() {
         fetch('http://api.open-notify.org/iss-now.json')
             .then(response => response.json())
