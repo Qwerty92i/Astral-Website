@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Astre - ISS</title>
     <link rel="stylesheet" href="css/iss.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
 </head>
 <body>
 
@@ -27,20 +33,27 @@
         <h1>ISS</h1>
         <p>Bienvenue sur la page <strong>ISS</strong>.</p>
         <p>Ici, tu pourras observer la Station spatiale internationale (ISS), savoir combien de personnes s'y trouvent et découvrir où elle se situe exactement.</p>
+        
         <div id="iss-info">
             <p>Latitude : <span id="iss-lat">...</span></p>
             <p>Longitude : <span id="iss-lon">...</span></p>
             <p>Dernière mise à jour : <span id="iss-time">...</span></p>
         </div>
-        
+
+        <div id="iss-map"></div>
+
         <div style="margin-top: 2rem; text-align: center;">
             <a href="quizISS.html" style="display: inline-block; padding: 0.8rem 1.5rem; background-color: #a9d6ff; color: #000; text-decoration: none; border-radius: 6px; font-weight: bold; transition: background-color 0.3s;">📝 Faire le Quiz ISS</a>
         </div>
     </div>
 
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
     <script src="js/iss.js"></script>
 </body>
 </html>
 
-</body>
-</html>

@@ -112,3 +112,9 @@ a:hover {
         padding: 1.5rem;
     }
 }
+     #iss-map {
+            height: 400px;
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
