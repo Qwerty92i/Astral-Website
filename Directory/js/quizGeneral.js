@@ -1,4 +1,3 @@
-// Questions optimisées pour le Quiz Général - Histoire de l'Espace
 const quizGeneralQuestions = [
     {
         question: "Qui a été le premier astronaute à voyager dans l'espace ?",

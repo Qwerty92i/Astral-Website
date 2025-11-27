@@ -1,4 +1,3 @@
-// Questions optimisées pour le Quiz Daily Astre
 const quizDailyAstreQuestions = [
     {
         question: "Quel est l'objet le plus photographié par les télescopes spatiaux ?",
@@ -110,7 +109,6 @@ const quizDailyAstreQuestions = [
     }
 ];
 
-// Initialiser le quiz
 document.addEventListener("DOMContentLoaded", () => {
     new Quiz(quizDailyAstreQuestions);
 });

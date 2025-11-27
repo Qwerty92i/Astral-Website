@@ -1,4 +1,3 @@
-// Questions optimisées pour le Quiz Météores & Astéroïdes
 const quizMeteosQuestions = [
     {
         question: "Qu'est-ce qu'un météore ?",

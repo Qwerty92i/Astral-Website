@@ -1,4 +1,3 @@
-// Questions optimisées pour le Quiz SpaceX
 const quizSpaceXQuestions = [
     {
         question: "En quelle année SpaceX a-t-elle été fondée ?",

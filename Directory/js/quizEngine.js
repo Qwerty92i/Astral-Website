@@ -1,4 +1,3 @@
-// Logique commune pour tous les quiz
 class Quiz {
     constructor(questionsData) {
         this.questions = questionsData;
@@ -79,7 +78,6 @@ class Quiz {
             this.showQuestion();
         } else {
             this.showScore();
-            // Si on rejoue, réinitialiser
             if (this.nextButton.innerHTML === "Rejouer") {
                 this.nextButton.addEventListener("click", () => {
                     this.startQuiz();

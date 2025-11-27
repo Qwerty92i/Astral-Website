@@ -1,9 +1,7 @@
-// Vérifier si l'utilisateur est déjà connecté
 if (localStorage.getItem("isLoggedIn") === "true") {
     window.location.href = "astral.html";
 }
 
-// Gestion du formulaire d'inscription
 document.getElementById("registerForm").addEventListener("submit", async function(e) {
     e.preventDefault();
     
@@ -13,8 +11,7 @@ document.getElementById("registerForm").addEventListener("submit", async functio
 
     document.getElementById("error").textContent = '';
     document.getElementById("success").textContent = '';
-
-    // Validation du mot de passe
+    
     if (password.length < 6) {
         document.getElementById("error").textContent = "Le mot de passe doit contenir au moins 6 caractères.";
         return;

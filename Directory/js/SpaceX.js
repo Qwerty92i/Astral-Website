@@ -1,4 +1,3 @@
-// Charger les données des lancements SpaceX
 fetch("https://api.spacexdata.com/v4/launches/query", {
     method: "POST",
     headers: { "Content-Type": "application/json" },

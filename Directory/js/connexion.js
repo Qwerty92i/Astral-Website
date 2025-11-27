@@ -1,9 +1,7 @@
-// Vérifier si l'utilisateur est déjà connecté
 if (localStorage.getItem("isLoggedIn") === "true") {
     window.location.href = "astral.html";
 }
 
-// Gestion du formulaire de connexion
 document.getElementById("loginForm").addEventListener("submit", async function(e) {
     e.preventDefault();
     const email = document.getElementById("loginEmail").value;
